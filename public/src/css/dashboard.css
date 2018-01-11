@@ -1,0 +1,265 @@
+.navbar-toggle {
+
+
+  background-color: black;
+  border-width: 0px;
+  border-radius: 0px;
+
+}
+.navbar-toggle span .icon-bar{
+  color:white;
+
+}
+
+
+.post{
+    border-left-color: rgb(228, 98, 98);
+    }
+    .row{
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+
+    }
+    
+    .col-md-9{
+        background-color: #ECF0F1;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-right: 4%;
+        padding-top: 3%;
+        padding-left:4%; 
+    }
+    body{
+        background-image:url('../img/bg2.jpg');
+
+        
+    }
+     .left{
+        padding-left: 20px;
+        padding-top: 30px;
+          color: white;
+        
+      }
+      .left h5{
+        font-size: 30px;
+        font-family: 'helveticaneuecondensedbold';
+      
+      }
+     
+.info{
+    
+    color:black;
+    font-size: 17px;
+
+}    
+.details{
+    color:rgba(0,0,0,0.4);
+    font-size: 15px;
+}
+.postcont{
+    font-size: 35px;
+}
+article{
+    background-color: white;
+    padding-left: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+
+
+
+.success{
+    color:green;
+    background-color: rgb(156, 204, 156);
+    text-align:center;
+
+}
+.error{
+    color: red;
+    padding: 0 px;
+    margin: 0 px;
+    background-color: rgb(172, 110, 110);
+
+    text-align: right;
+}
+body{
+    font-family: 'helveticaneuecondensedbold';
+}
+h5{
+    font-family: 'helveticaneuecondensedbold';
+
+}
+.bton{
+   
+    background-color: black;
+    border-width: 0px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    padding:10px;
+    color:white;
+    border-radius: 3px;
+     padding-left: 20px;
+    padding-right: 20px;
+}
+.bton1{
+   
+    background-color: white;
+    border-width: 0px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    padding:10px;
+    color:black;
+    border-radius: 3px;
+     padding-left: 20px;
+    padding-right: 20px;
+}
+.bton:focus{
+  
+  box-shadow: 0 0 10px black;
+   background-color: white;
+   color:black;
+    outline: none !important;
+    border:none;
+
+
+}
+.bton1:focus{
+  
+  box-shadow: 0 0 10px black;
+   background-color: black;
+   color:white;
+    outline: none !important;
+    border:none;
+
+
+}
+ .form-control{
+        border-width: 0px;
+        border-radius: 0px;
+       
+    }
+    .form-control:focus {
+    outline: none !important;
+    border:1px solid rgba(0,0,0,0.8);
+    box-shadow: 0 0 10px black;
+}
+ 
+
+ ::-moz-selection {
+       background-color: black;
+       color: white;
+}
+
+/* Works in Safari */
+::selection {
+       background-color: black;
+       color: white;
+}
+h3{
+ font-family: 'helveticaneuecondensedbold';
+}
+
+.navbar-default {
+    background-color: black;
+    color:white;
+    border-width: 0px;
+   border-radius: 0px;
+   margin-bottom: 0px;
+    }
+
+
+  
+
+
+
+    .navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: white;
+}
+/* Link */
+.navbar-default .navbar-nav > li > a {
+    color: rgba(255,255,255,0.8);
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: rgba(255,255,255,0.8);
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: white;
+    background-color: rgba(255,255,255,0.8);
+}
+::-webkit-input-placeholder{
+    font-size: 20px;
+    opacity:1;
+
+}
+::-moz-placeholder { 
+  color:rgba(0,0,0,0.8);
+   opacity:1;
+   font-size: 20px;
+}
+:-ms-input-placeholder { 
+  color: rgba(0,0,0,0.8);
+   opacity:1;
+   font-size: 20px;
+}
+:-moz-placeholder { 
+  color:rgba(0,0,0,0.8);
+   opacity:1;
+   font-size: 20px;
+}
+::-webkit-input-focus{
+    border-color:black;
+}
+a{
+    text-decoration: none;
+    color:rgba(0,0,0,0.4);
+
+}
+a:visited {
+  /* Applies to all visited links */
+  text-decoration:  none;
+  color:rgba(0,0,0,0.4);
+ 
+  } 
+a:hover   {
+  /* Applies to links under the pointer */
+  text-decoration:  none;
+  color:black;
+  font-style: bold;
+  
+  } 
+a:active  {
+  /* Applies to activated links */
+  text-decoration:  none;
+  color: black;
+  font-style: bold;
+ 
+  } 
+
+
+
+@media (max-width: 480px) {
+.post{
+    text-align: center;
+}
+.newpost{
+    text-align: center;
+}
+.col-md-9{
+    padding-left: 8%;
+}
+}
+
+
+    
+  

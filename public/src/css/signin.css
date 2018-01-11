@@ -1,0 +1,164 @@
+body{
+    background-image: url('../img/renblack.png');
+    background-repeat: no-repeat;
+    background-position:100% 10%;
+
+
+}
+.success{
+    color:green;
+    background-color: rgb(156, 204, 156);
+    text-align:center;
+
+}
+.error{
+    color: red;
+    padding: 0 px;
+    margin: 0 px;
+    background-color: rgb(172, 110, 110);
+
+    text-align: right;
+}
+body{
+    font-family: 'helveticaneuecondensedbold';
+}
+
+
+
+h3{
+    text-align: left;
+    font-family: 'helveticaneuecondensedbold';
+    font-size: 50px;
+    margin-left: 30px;
+    line-height: 45px;
+}
+.grey{
+	color:#85929E;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.blacktext{
+	color:black;
+	margin-bottom: 40px;
+	margin-top: 0px;
+}
+.toptext{
+	margin-top: 10%;
+}
+
+    .form-control{
+        border-width: 2px;
+        border-color:rgba(0,0,0,0.5);
+        background-color: rgba(0,0,0,0);
+        width:50%;
+    }
+.fields{
+	margin-left: 30px;
+}
+.block{
+	padding: 0px;
+}
+
+
+
+
+     ::-webkit-input-placeholder{
+    font-size: 15px;
+    opacity:1;
+
+}
+
+::-moz-placeholder { 
+  color:rgba(0,0,0,0.8);
+   opacity:1;
+}
+:-ms-input-placeholder { 
+  color: rgba(0,0,0,0.8);
+   opacity:1;
+}
+:-moz-placeholder { 
+  color:rgba(0,0,0,0.8);
+   opacity:1;
+}
+::-webkit-input-focus{
+    border-color:black;
+}
+.bton{
+   
+    background-color: black;
+    border-width: 0px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    padding:10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:white;
+    border-radius: 3px;
+}
+.bton:focus{
+  
+  box-shadow: 0 0 10px black;
+   background-color: white;
+   color:black;
+    outline: none !important;
+    border:none;
+
+
+}
+.form-control:focus {
+    outline: none !important;
+    border:1px solid rgba(0,0,0,0.8);
+    box-shadow: 0 0 10px black;
+}
+ 
+
+ ::-moz-selection {
+       background-color: black;
+       color: white;
+}
+
+/* Works in Safari */
+::selection {
+       background-color: black;
+       color: white;
+}
+
+@media (max-width: 1200px) {
+	.toptext{
+	margin-top: 20%;
+}
+
+
+}
+
+@media (max-width: 480px) {
+h3{
+     font-size: 35px;
+     line-height: 30px;
+   
+}
+.toptext{
+	margin-top: 40%;
+}
+body{
+	background:rgba(255,255,255,0.5);
+
+    background-position:50% 6%;
+}
+.form-control{
+	width:65%;
+}
+
+}
+@media (max-width: 380px) {
+.bton{
+   margin-bottom: 2px;
+   padding:7px;
+}
+.form-control{
+    margin-bottom: 4px;
+    width:70%;
+}
+
+
+}
