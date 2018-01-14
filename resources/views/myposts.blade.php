@@ -2,150 +2,135 @@
 
 
 @section('title')
-Dashboard
+  Dashboard
 @endsection
 @include('postvalidate')
 @section('content')
-<link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
-<div id='error' class='error'>
-</div>
-<div id='success' class='success'>
-</div>
-<header>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{route('dashboard')}}">Renegade</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('account')}}">Account</a></li>
-        <li><a href="{{route('mychats')}}">Chats</a></li>
-        <li><a href="{{route('myposts')}}">My Posts</a></li>
-        <li><a href="{{route('logout')}}">Logout</a></li>
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</header>
-<div class='row newpost'>
-
-    <div class='col-md-9 container-fluid eq_height'>
-
-     <!--</div></div>
-
-
-         <div name='posts' class='row post'>
-            <div class='col-md-3'></div>
-            <div class='col-md-9'>-->
-
-
-            <article data-postid='32'>
-              <div class='info'>
-              testuser <br></div><div class="details">11:00pm
-              </div>
-             <p class="postcont">HELLO WORLD</p>
-               <div class='interaction'>
-             <p>
-             <a href='#' class='like' >LIKE</a>&nbsp&nbsp
-             <a href='#' class='like' >DISLIKE</a>
-             &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-             <a href='#'>Delete</a>
-
-             <button class="btn btn-primary pull-right" >replies</button>
-
-            </p>
-            </div>
-             </article>
-
-@foreach($posts as $post)
-
-
-
-
-        <article data-postid='32'>
-          <div class='info'>
-          testuser <br></div><div class="details">11:00pm
-          </div>
-         <p class="postcont">HELLO WORLD</p>
-           <div class='interaction'>
-         <p>
-         <a href='#' class='like' >LIKE</a>&nbsp&nbsp
-         <a href='#' class='like' >DISLIKE</a>
-         &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-         <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-
-        </p>
-        </div>
-         </article>
-
-
-
-
-
-
-        <article data-postid='{{$post->id}}'>
-            <div class='info'>
-            {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
-            </div>
-           <p class="postcont">{{$post->body }}</p>
-             <div class='interaction'>
-           <p>
-           <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
-           <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-           &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-           <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-
-       </p>
-       </div>
-     </article>
-
-@endforeach
-            </div>
+  <link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
+  <link rel='stylesheet' href={{URL::to('src/css/myposts.css')}}>
+  <script src={{URL::to('src/js/myposts.js')}}></script>
+  <div id='error' class='error'>
+  </div>
+  <div id='success' class='success'>
+  </div>
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{route('dashboard')}}">Renegade</a>
         </div>
 
-        <div class="modal" tabindex="-1" role="dialog" id='editmodal'>
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-              <label>Edit</label>
-                <textarea class='form-control' rows='5' col='5' id='editform'>
-                </textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary bton" id='modal-save'>Save changes</button>
-                <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li><a href="{{route('account')}}">Account</a></li>
+            <li><a href="{{route('mychats')}}">Chats</a></li>
+            <li><a href="{{route('logout')}}">Logout</a></li>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
+  <body>
+    <div id="site-wrapper">
+      <div id="site-canvas">
+        <div id="site-menu">
+          <h2>Albin</h2>
+          <small>I really like the idea.im interested lets get tgther a team and start asap.</small>
+          <a>accept</a>
+        
+          <br>
+          <br>
+          <h2>Albin</h2>
+          <small>I really like the idea.im interested lets get tgther a team and start asap.</small>
+          <a>accept</a>
+          <h2>Albin</h2>
+          <small>I really like the idea.im interested lets get tgther a team and start asap.</small>
+          <a>accept</a>
+          ike the idea.im interested lets get tgther a team and start asap.</small>
+          <a>accept</a>
+        </div>
+        <div id="hearts">
+          <div class='row newpost'>
+
+            <div class='col-md-9 container-fluid eq_height'>
+
+              <!--</div></div>
+
+
+              <div name='posts' class='row post'>
+              <div class='col-md-3'></div>
+              <div class='col-md-9'>-->
+
+
+              <article data-postid='32'>
+                <div class='info'>
+                  testuser <br></div><div class="details">11:00pm
+                  </div>
+                  <p class="postcont">HELLO WORLD</p>
+                  <div class='interaction'>
+                    <p>
+                      <a href='#' class='like' >LIKE</a>&nbsp&nbsp
+                      <a href='#' class='like' >DISLIKE</a>
+                      &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
+                      <a href='#'>Delete</a>
+                      <a href="#" data-transition="ease" class="pull-right"><i class="fa"></i><span>replies</span></a>
+
+
+                    </p>
+                  </div>
+                </article>
+
               </div>
             </div>
           </div>
+
+          <div class="modal" tabindex="-1" role="dialog" id='editmodal'>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <label>Edit</label>
+                  <textarea class='form-control' rows='5' col='5' id='editform'>
+                  </textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary bton" id='modal-save'>Save changes</button>
+                  <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
-
-
+        <script>
+        var token='{{Session::token()}}';
+        var url='{{route('edit')}}';
+        var likeurl='{{route('like')}}';
+        var  dashboard='{{route('dashboard')}}';
+        var createpost='{{route('createpost')}}';
+        </script>
+      </div>
     </div>
-    <script>
-      var token='{{Session::token()}}';
-      var url='{{route('edit')}}';
-      var likeurl='{{route('like')}}';
-      var  dashboard='{{route('dashboard')}}';
-      var createpost='{{route('createpost')}}';
-      </script>
-</div>
+  </div>
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+</body>
 @endsection
