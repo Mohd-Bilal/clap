@@ -1,7 +1,15 @@
 <template lang="html">
   <div class="chat-message">
-    <p>{{ message.message }}</p>
-    <small>{{ message.user.username }}</small>
+
+
+    <li class="other">
+      <div class="msg">
+          <div class="user">{{ message.user.username }}<span class="range admin">Admin</span></div>
+          <p>{{ message.message }}</p>
+          
+        <time>20:17</time>
+      </div>
+    </li>
   </div>
 </template>
 
@@ -10,12 +18,3 @@ export default {
     props: ['message']
 }
 </script>
-
-<style lang="css">
-.chat-message {
-    padding: 1rem;
-}
-.chat-message > p {
-    margin-bottom: .5rem;
-}
-</style>
