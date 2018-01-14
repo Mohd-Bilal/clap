@@ -68,7 +68,13 @@ article{
     margin-top:20px;
     margin-bottom:20px;
 }
-
+.chatbubble{
+    float:right;
+    margin-right:15px;
+     width:3%;
+    height:auto; 
+    
+}
 
 
 

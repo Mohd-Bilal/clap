@@ -66,8 +66,16 @@ use App\Events\MessagePosted;
     'uses' => 'UserController@getUserImage',
     'as'   => 'account.image'
   ]);
+  Route::get('myposts',[
+    'uses'=>'UserController@myposts',
+    'as'=>'myposts'
 
+  ]);
+  Route::get('mychats',[
+    'uses'=>'UserController@mychats',
+    'as'=>'mychats'
 
+  ]);
 
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',

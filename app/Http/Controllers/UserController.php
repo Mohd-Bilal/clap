@@ -241,7 +241,19 @@ public function googleSignInCallback()
      return redirect()->back();
 
 }
+public function myposts()
+  {
+    $post=Auth::user()->posts();
+    return view('myposts',['posts'=>$post]);
 
+
+  }
+  public function mychats()
+  {
+    return view('mychats');
+
+
+  }
 
 
 

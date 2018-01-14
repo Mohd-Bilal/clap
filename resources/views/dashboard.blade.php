@@ -31,6 +31,8 @@ Dashboard
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('account')}}">Account</a></li>
+        <li><a href="{{route('mychats')}}">Chats</a></li>
+        <li><a href="{{route('myposts')}}">My Posts</a></li>
         <li><a href="{{route('logout')}}">Logout</a></li>
 
       </ul>
@@ -88,7 +90,10 @@ Dashboard
                     &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                     @endif  --}}
-                     </p>
+                   <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
+                    
+                    </p>
+                    
                     </div>
                          </article>
 
@@ -112,6 +117,9 @@ Dashboard
                 &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                 @endif  --}}
+               <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
+      
+                
             </p>
             </div>
           </article>
@@ -129,8 +137,8 @@ Dashboard
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
            &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
            <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-    
-       </p>
+
+       </p>       
        </div>
      </article>
 @endif
