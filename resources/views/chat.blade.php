@@ -16,7 +16,7 @@ Renegade
                       <div class="members">users</div>
                       <span class="badge pull-right">@{{ usersInRoom.length }}</span>
             </div>
-	          
+
         </div>
               <chat-log :messages="messages"></chat-log>
               <chat-composer v-on:messagesent="addMessage"></chat-composer>

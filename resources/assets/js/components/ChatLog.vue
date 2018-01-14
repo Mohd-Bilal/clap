@@ -12,9 +12,3 @@ export default {
     props: ['messages']
 }
 </script>
-
-<style lang="css">
-.chat-log .chat-message:nth-child(even) {
-    background-color: #ccc;
-}
-</style>

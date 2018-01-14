@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="typezone">
-      <input type="text" placeholder="Start typing your message..." v-model="messageText" @keyup.enter="sendMessage">
+      <!-- <input type="text" placeholder="Start typing your message..." v-model="messageText" @keyup.enter="sendMessage"> -->
+      <textarea name="message" rows="2" v-model="messageText" required autocomplete="off"></textarea>
       <button class="btn btn-primary" @click="sendMessage">Send</button>
   </div>
 </template>
@@ -30,10 +31,11 @@ export default {
 .chat-composer {
     display: flex;
 }
-.chat-composer input {
-    flex: 1 auto;
+textarea {
+    width:85%;
 }
 .chat-composer button {
-    border-radius: 0;
+    border-radius: 3px;
+    padding: 15%;
 }
 </style>
