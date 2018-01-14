@@ -27,8 +27,6 @@ Dashboard
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{route('account')}}">Account</a></li>
         <li><a href="{{route('mychats')}}">Chats</a></li>
@@ -86,6 +84,7 @@ Dashboard
 
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                     <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
+                    &nbsp&nbsp<a href='#'>Report</a>
                     {{--  @if(Auth::user() == $post->user)
                     &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
@@ -113,6 +112,7 @@ Dashboard
                 <p>
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
+                &nbsp&nbsp<a href='#'>Report</a>
                 {{--  @if(Auth::user() == $post->user)
                 &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
@@ -136,8 +136,8 @@ Dashboard
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
            &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-           <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-
+           <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>&nbsp&nbsp
+           <a href='#'>Report</a> 
        </p>       
        </div>
      </article>

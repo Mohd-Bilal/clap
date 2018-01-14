@@ -51,6 +51,17 @@ Account
                     <label for="email">Email</label>
                     <input type="text" name="email" class="form-control" value="{{ $user->email }}" id="email">
                 </div>
+                <div class='form-group'>
+                    <button  id='changepwd' name='changepwd' type="button">Change Password</button>
+                    <div id="change" style="display:None">
+                        <label for="Currentpassword">Current Password</label>
+                        <input type="password" name="curpwd">
+                        <label for="newpassword">New Password</label>
+                        <input type="password" name="newpwd">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input type="password" name="confirmpwd">
+                    </div>
+                </div>    
                 <div class="form-group">
                     <label for="image">Image (only .jpg)</label>
                     <input type="file" name="image" class="form-control" id="image">
