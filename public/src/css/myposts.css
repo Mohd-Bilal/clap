@@ -36,6 +36,7 @@
   left: -300px;
   background: black;
   padding: 15px;
+  overflow: auto;
 }
 
 
