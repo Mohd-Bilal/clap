@@ -49,7 +49,7 @@ Dashboard
     </div>
     <div class='col-md-9 container-fluid eq_height'>
         <section class='newpost'>
-             
+
 
                  <div class='form-group'>
                       <textarea name='body' id='newpost' class='form-control'  rows='7' placeholder='What do you have to say?'></textarea>
@@ -58,7 +58,7 @@ Dashboard
 
 
                 <input type='hidden' value='{{Session::token()}}' name='_token'>
-            
+
 
          </section>
      <!--</div></div>
@@ -67,7 +67,7 @@ Dashboard
          <div name='posts' class='row post'>
             <div class='col-md-3'></div>
             <div class='col-md-9'>-->
-               
+
 
 @foreach($posts as $post)
     @if(!(Auth::user() == $post->user))
@@ -80,7 +80,7 @@ Dashboard
                              {{$post->user['username']}}<br></div><div class="details">{{$post->created_at}}
                      </div>
                         <p class="postcont">{{$post->body}}</p>
-                      
+
                      <div class='interaction'>
                     <p>
 
@@ -91,9 +91,9 @@ Dashboard
                     <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                     @endif  --}}
                    <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
-                    
+
                     </p>
-                    
+
                     </div>
                          </article>
 
@@ -118,8 +118,8 @@ Dashboard
                 <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
                 @endif  --}}
                <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
-      
-                
+
+
             </p>
             </div>
           </article>
@@ -138,7 +138,7 @@ Dashboard
            &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
            <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
 
-       </p>       
+       </p>
        </div>
      </article>
 @endif
@@ -151,7 +151,7 @@ Dashboard
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                
+
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>

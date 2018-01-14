@@ -70,12 +70,12 @@ use App\Events\MessagePosted;
     'uses'=>'UserController@myposts',
     'as'=>'myposts'
 
-  ]);
+  ])->middleware('auth');
   Route::get('mychats',[
     'uses'=>'UserController@mychats',
     'as'=>'mychats'
 
-  ]);
+  ])->middleware('auth');
 
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',
