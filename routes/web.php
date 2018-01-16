@@ -76,7 +76,13 @@ use App\Events\MessagePosted;
     'as'=>'mychats'
 
   ])->middleware('auth');
+  Route::get('adduserfield',function(){
+    return view('interest');
+    
 
+  }
+);
+  
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',
         'as' =>'dashboard',
