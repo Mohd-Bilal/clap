@@ -70,10 +70,11 @@ class UserController extends Controller{
       $obj = json_decode($body);
       if($obj->state == "success"){
         $request->session()->put('jwt_token', '$obj->token');
-        return($obj->description);
+        return redirect()->route('dashboard');
       }
       elseif($obj->state == "failure"){
-        return($obj->description);
+        // return($obj->description);
+        return redirect()->back();
       }
 
 
@@ -118,9 +119,10 @@ class UserController extends Controller{
     return redirect()->route('dashboard');
     }
     elseif($obj->state == "failure"){
-      return($obj->description);
+      // return($obj->description);
+      return redirect()->back();
     }
-    return redirect()->back();
+   
   }
 
 
