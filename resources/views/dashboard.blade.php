@@ -42,7 +42,7 @@ Dashboard
     <div class='col-md-3 container-fluid eq_height '>
       <div class="left">
         <h5>Your Feed</h5>
-        <img src='{{Auth::user()->avatar}}' class='img-responsive' style='height:175px;' alt='Profile picture'>
+        {{--  <img src='{{Auth::user()->avatar}}' class='img-responsive' style='height:175px;' alt='Profile picture'>  --}}
       </div>
     </div>
     <div class='col-md-9 container-fluid eq_height'>
@@ -68,80 +68,22 @@ Dashboard
 
 
 @foreach($posts as $post)
-    @if(!(Auth::user() == $post->user))
-      @if((Auth::user()->channel == "channel2") && ($likecount[$post->id]['likes'] > 0))
-                 <article data-postid='{{$post->id}}'>
-                             @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
-                             <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="User" class="img-responsive" style="height:40px;">
-                             @endif
-                          <div class='info'>
-                             {{$post->user['username']}}<br></div><div class="details">{{$post->created_at}}
-                     </div>
-                        <p class="postcont">{{$post->body}}</p>
-
-                     <div class='interaction'>
-                    <p>
-
-                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
-                    <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-                    &nbsp&nbsp<a href='#'>Report</a>
-                    {{--  @if(Auth::user() == $post->user)
-                    &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-                    <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-                    @endif  --}}
-                   <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
-
-                    </p>
-
-                    </div>
-                         </article>
-
-            @endif
-            @if(Auth::user()->channel == "channel1")
-              @php
-                $tag=unserialize($post->tags);
-              @endphp
-              @if((($userinterest['i1']== 1)&&($tag['t1'] == "true"))||(($userinterest['i2']== 1)&&($tag['t2'] == "true"))||(($userinterest['i3']== 1)&&($tag['t3'] == "true"))
-              ||(($userinterest['i4']== 1)&&($tag['t4'] == "true"))||(($userinterest['i5']== 1)&&($tag['t5'] == "true")))
-               <article data-postid='{{$post->id}}'>
-                 <div class='info'>
-                 {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
-                 </div>
-                <p class="postcont">{{$post->body }}</p>
-                  <div class='interaction'>
-                <p>
-                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
-                <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-                &nbsp&nbsp<a href='#'>Report</a>
-                {{--  @if(Auth::user() == $post->user)
-                &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-                <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-                @endif  --}}
-               <img class='chatbubble' src='../src/img/chatbubble.png' alt='Chatbubble'>
-
-
-            </p>
-            </div>
-          </article>
-              @endif
-            @endif
-        @else
-        <article data-postid='{{$post->id}}'>
+      <article data-postid='{{$post->id}}'>
             <div class='info'>
-            {{$post->user['username']}} <br></div><div class="details">{{$post->created_at}}
+            {{$post->author_id}} <br></div><div class="details">{{$post->createdAt}}
             </div>
-           <p class="postcont">{{$post->body }}</p>
+           <p class="postcont">{{$post->post_content}}</p>
              <div class='interaction'>
-           <p>
+             {{--  <p>
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
-           &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
+           &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&npbsp&nbsp
            <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>&nbsp&nbsp
            <a href='#'>Report</a> 
-       </p>       
+       </p>          --}}
        </div>
      </article>
-@endif
+
 @endforeach
             </div>
         </div>

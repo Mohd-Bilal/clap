@@ -30,12 +30,8 @@ class PostController extends Controller{
     ])->getBody();
     $obj = json_decode($body);
     if($obj->state == "success"){
-
-      return($obj->data[0]->id);
+        return view('dashboard',['posts'=>$obj->data]);
     }
-
-    return view('dashboard',['posts'=>$posts,'likecount'=>$likecount,'userinterest'=>$userinterest]);
-
   }
 
   public function createPost(Request $request){
