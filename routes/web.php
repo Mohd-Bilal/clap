@@ -86,7 +86,7 @@ use App\Events\MessagePosted;
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',
         'as' =>'dashboard',
-   ])->middleware('auth');
+   ]);
 
     Route::post('createpost',[
     'uses' => 'PostController@createPost',
