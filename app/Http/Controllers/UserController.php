@@ -50,7 +50,7 @@ class UserController extends Controller{
         'first_name' =>$request['first_name'],
         'second_name' =>$request['last_name'],
         'gender' => $request['gender'],
-        'occupation' => $request['channel'],
+        'occupation_id' => 1,
         'avatar' => $avatar
 
       ]
@@ -62,13 +62,19 @@ class UserController extends Controller{
     elseif ($obj->state="success"){
       $client = new Client();
       $body = $client->post('http://localhost:3000/authentication/login/renegade', [
-        'user' =>[
+        'form_params' =>[
           'username' => $request['username'],
           'password' => $request['password']
         ]
       ])->getBody();
       $obj = json_decode($body);
-      return($obj->message);
+      if($obj->state == "success"){
+        $request->session()->put('jwt_token', '$obj->token');
+        return($obj->description);
+      }
+      elseif($obj->state == "failure"){
+        return($obj->description);
+      }
 
 
     }
@@ -100,13 +106,22 @@ class UserController extends Controller{
 
     $client = new Client();
     $body = $client->post('http://localhost:3000/authentication/login/renegade', [
-      'user' =>[
+      'form_params' =>[
         'username' => $request['username'],
         'password' => $request['password']
       ]
     ])->getBody();
     $obj = json_decode($body);
-    return($obj->message);
+    if($obj->state == "success"){
+      $request->session()->put('jwt_token', $obj->token);
+    //  $value = $request->session()->get('jwt_token');
+    //  return($value);
+    //  return($obj->description);
+    return redirect()->route('dashboard');
+    }
+    elseif($obj->state == "failure"){
+      return($obj->description);
+    }
     return redirect()->back();
   }
 
