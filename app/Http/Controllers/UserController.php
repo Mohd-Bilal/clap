@@ -79,21 +79,19 @@ class UserController extends Controller{
 
     }
 
-
-
-
-
-
-
     return redirect()->route('dashboard');
-
   }
+
+
   public function isOn($interest){
     if($interest=='on')
     return 1;
     else
     return 0;
   }
+
+
+
   public function SignIn(Request $request)
   {
 
