@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 use Socialite;
 
 class UserController extends Controller{
@@ -17,39 +19,50 @@ class UserController extends Controller{
 
       }
 
-
+	
 
     public function Signup(Request $request){
         $this->validate($request,[
-          'email' => 'required|email|unique:users',
+          'email' => 'required|email',
           'first_name' => 'required|max:120',
           'last_name' => 'required|max:120',
-          'username'=>'required|unique:users',
-          'password' => 'required|min:4',
-          'confirmpassword'=>'required_with:password|same:password|min:4',
+          'username'=>'required',
+          'password' => 'required|min:8',
+          'confirmpassword'=>'required_with:password|same:password|min:8',
           'gender' => 'required',
           'channel' => 'required',
 
           ]);
         $password=bcrypt($request['password']);
         $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
+	if ($request['gender']=='M')
+          		$avatar='/src/img/dummymale.jpg';
+      	else
+        		$avatar='/src/img/dummyfemale.jpeg';       
 
-        $user=new User();
-        $user->email=$request['email'];
-        $user->password=$password;
-        $user->first_name=$request['first_name'];
-        $user->last_name=$request['last_name'];
-        $user->name=$request['first_name'];
-        $user->gender=$request['gender'];
-        $user->channel=$request['channel'];
-        $user->username=$request['username'];
-        $user->interest=serialize($interest);
-        if($user->gender=='male')
-          $user->avatar='/src/img/dummymale.jpg';
-        else
-          $user->avatar='/src/img/dummyfemale.jpeg';  
-        $user->save();
-        Auth::login($user);
+
+        $client = new Client(); //GuzzleHttp\Client
+	$result = $client->post('http://localhost:3000/authentication/signup/renegade', [
+    		'form_params' => [
+        		'username' => $request['username'],
+			'email' => $request['email'],
+			'password' => $request['password'],
+			'first_name' =>$request['first_name'],
+			'second_name' =>$request['last_name'],
+			'gender' => $request['gender'],
+			'occupation' => $request['channel'],
+			'avatar' => $avatar
+		   
+    		]
+	]);    
+
+        return("data send");      
+
+
+
+
+        
+      
         return redirect()->route('dashboard');
 
     }

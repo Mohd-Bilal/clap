@@ -136,15 +136,9 @@ Dashboard
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
            &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-<<<<<<< HEAD
            <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>&nbsp&nbsp
            <a href='#'>Report</a> 
        </p>       
-=======
-           <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>
-
-       </p>
->>>>>>> c1172d28ca21275d8326a6ae2a6c6d10e7f37f48
        </div>
      </article>
 @endif

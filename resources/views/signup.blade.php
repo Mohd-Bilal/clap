@@ -77,11 +77,11 @@ Sign Up
                   <div class='form-group'>
                   <select name="channel">
                     <option value=""disabled selected>Profession</option>
-                    <option value="channel1">Student</option>
-                    <option value="channel2">Engineer</option>
-                    <option value="channel2">Doctor</option>
-                    <option value="channel2">Police</option>
-                    <option value="channel2">Techie</option>
+                    <option value="Student">Student</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Police">Police</option>
+                    <option value="Techie">Techie</option>
                   </select>
                   </div>
                 </div>
@@ -90,8 +90,8 @@ Sign Up
                   <div class='form-group'>
 
                   <select name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
                   </select>
                   </div>
 
