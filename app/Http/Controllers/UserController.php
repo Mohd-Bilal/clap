@@ -43,7 +43,7 @@ class UserController extends Controller{
 
     $client = new Client(); //GuzzleHttp\Client
     $body = $client->post('http://localhost:3000/authentication/signup/renegade', [
-      'form_params' => [
+      'json' => [
         'username' => $request['username'],
         'email' => $request['email'],
         'password' => $request['password'],
@@ -62,14 +62,14 @@ class UserController extends Controller{
     elseif ($obj->state="success"){
       $client = new Client();
       $body = $client->post('http://localhost:3000/authentication/login/renegade', [
-        'form_params' =>[
+        'json' =>[
           'username' => $request['username'],
           'password' => $request['password']
         ]
       ])->getBody();
       $obj = json_decode($body);
       if($obj->state == "success"){
-        $request->session()->put('jwt_token', '$obj->token');
+        $request->session()->put('jwt_token', $obj->token);
         return redirect()->route('dashboard');
       }
       elseif($obj->state == "failure"){
@@ -105,7 +105,7 @@ class UserController extends Controller{
 
     $client = new Client();
     $body = $client->post('http://localhost:3000/authentication/login/renegade', [
-      'form_params' =>[
+      'json' =>[
         'username' => $request['username'],
         'password' => $request['password']
       ]
