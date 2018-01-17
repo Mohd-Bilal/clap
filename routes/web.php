@@ -77,12 +77,10 @@ use App\Events\MessagePosted;
     'as'=>'mychats'
 
   ]);
-  Route::get('adduserfield',function(){
-    return view('interest');
-    
-
-  }
-);
+  Route::get('adduserfield',[
+    'uses'=>'UserController@Fetchfield',
+    'as'=> 'adduserfield'
+  ]);
   
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',

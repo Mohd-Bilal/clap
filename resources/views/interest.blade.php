@@ -41,17 +41,21 @@ Dashboard
         {{--  <div class='col-md-3 container-fluid eq_height '>
           
         </div>  --}}
-          <body>
+          {{--  <body>  --}}
     
-             <div name='posts' class='row post'>
-                <div>
-                  <div class="dashboard clearfix">
-                    <div class="col-md-6 clearfix">
-                      <div class="big notes-thumb" >
+             {{--  <div name='posts' class='row post'> </div> --}}
+                {{--  <div> </div> --}}
+                  {{--  <div class="dashboard clearfix"> </div> --}}
+                    {{--  <div class="col-md-6 clearfix"> </div> --}}
+                     @foreach($fields as $field) 
+                      <div class="big notes-thumb col-md-6" >
                         <span class="icon-font" aria-hidden="true"></span>
-                        <p>Art & Culture</p>
+                        <p>{{$field->field_name}}</p>
                       </div>
-                      <div class="small lock-thumb">
+                    
+                    @endforeach
+                    </div>
+                      {{--  <div class="small lock-thumb">
                          <p>Biology & Management</p>
                       </div>
                       <div class="small last cpanel-thumb" >
@@ -98,7 +102,7 @@ Dashboard
                         <div class="small git-thumb" ><span class="icon-font" aria-hidden="true"></span><p> Philanthropy </p></div>
                         <div class="small last code-thumb" ><span class="icon-font" aria-hidden="true"></span><p> Philosophy & Ethics </p></div>
                         <div class="small git-thumb" ><span class="icon-font" aria-hidden="true"></span><p> Physics </p></div>
-                        <div class="small last code-thumb" ><span class="icon-font" aria-hidden="true"></span><p> Social Science </p></div>
+                        <div class="small last code-thumb" ><span class="icon-font" aria-hidden="true"></span><p> Social Science </p></div>  --}}
                   <div class="col-md-6 clearfix">
                     
              
@@ -111,14 +115,14 @@ Dashboard
                 
                 </div>
                
-          
+{{--            
             </div>
     
            
          
-        </div>
+        </div>  --}}
       
-    </div>
+</div>
     @endsection
     
     

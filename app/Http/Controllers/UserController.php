@@ -26,7 +26,13 @@ class UserController extends Controller{
       return view('signup',['occupations'=>$occupation]);
   
     }
+  public function Fetchfield(){
+      $client=new Client();
+      $body=$client->get('http://localhost:3000/public/information/fields')->getBody();
+      $interests=json_decode($body);
+      return view('interest',['fields'=>$interests]);
 
+  }
 
   public function Signup(Request $request){
     $this->validate($request,[
