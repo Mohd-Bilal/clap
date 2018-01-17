@@ -24,7 +24,7 @@ class UserController extends Controller{
       $occupation=json_decode($body);
       // return ($occupation[0]->id);
       return view('signup',['occupations'=>$occupation]);
-  
+
     }
   public function Fetchfield(){
       $client=new Client();
@@ -140,9 +140,10 @@ class UserController extends Controller{
 
 
 
-  public function getLogout()
+  public function getLogout(Request $request)
   {
-    Auth::logout();
+    $request->session()->forget('jwt_token');
+
     return redirect()->route('welcome');
   }
 

@@ -15,28 +15,32 @@ class PostController extends Controller{
 
   public function getDashboard(Request $request){
     $value = $request->session()->get('jwt_token');
+    if($value){
+      $client = new Client(); //GuzzleHttp\Client
+      $body = $client->request('POST', 'http://localhost:3000/private/information/feed', [
+        'headers' => [
+          'Authorization' => 'Bearer '.$value
+        ],
+        'debug' => false,
+        'json' =>[
+          'requested_number' =>10,
+          'offset' => 0
+        ]
 
-    $client = new Client(); //GuzzleHttp\Client
-    $body = $client->request('POST', 'http://localhost:3000/private/information/feed', [
-      'headers' => [
-        'Authorization' => 'Bearer '.$value
-      ],
-      'debug' => false,
-      'json' =>[
-        'requested_number' =>10,
-        'offset' => 0
-      ]
+        ])->getBody();
 
-      ])->getBody();
-
-      $obj = json_decode($body);
-      if($obj->state == "success" && $obj->description_slug == "success-feeds"){
-        return view('dashboard',['posts'=>$obj->data]);
-      }
-      else {
-        return view('dashboard',['posts'=>$obj->description_slug]);
-      }
+        $obj = json_decode($body);
+        if($obj->state == "success" && $obj->description_slug == "success-feeds"){
+          return view('dashboard',['posts'=>$obj->data]);
+        }
+        else {
+          return view('dashboard',['posts'=>$obj->description_slug]);
+        }
     }
+    else{
+      return redirect()->route('welcome');
+    }
+  }
 
     public function createPost(Request $request){
       $post=new Post();
