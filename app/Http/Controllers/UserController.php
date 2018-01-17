@@ -122,7 +122,7 @@ class UserController extends Controller{
       // return($obj->description);
       return redirect()->back();
     }
-   
+
   }
 
 
