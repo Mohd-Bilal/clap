@@ -77,11 +77,9 @@ Sign Up
                   <div class='form-group'>
                   <select name="channel">
                     <option value=""disabled selected>Profession</option>
-                    <option value="Student">Student</option>
-                    <option value="Engineer">Engineer</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Police">Police</option>
-                    <option value="Techie">Techie</option>
+                    @foreach($occupations as $occ)
+                    <option value={{$occ->id}}>{{$occ->occupation}}</option>
+                    @endforeach
                   </select>
                   </div>
                 </div>

@@ -18,7 +18,13 @@ class UserController extends Controller{
     return view('dashboard');
 
   }
-
+  public function PreSignup(){
+      $client=new Client();
+      $body=$client->get('http://localhost:3000/public/information/occupations')->getBody();
+      $occupation=json_decode($body);
+      return view('signup',['occupations'=>$occupation]);
+  
+    }
 
 
   public function Signup(Request $request){

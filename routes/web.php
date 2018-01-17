@@ -17,9 +17,10 @@ use App\Events\MessagePosted;
         return view('welcome');
     })->name('welcome');
 
-    Route::get('signup', function () {
-        return view('signup');
-    });
+    Route::get('signup',[
+        'uses' => 'UserController@PreSignup',
+        'as'=>'signup'
+    ]);
     Route::get('signin', function () {
         return view('signin');
     })->name('signin');
