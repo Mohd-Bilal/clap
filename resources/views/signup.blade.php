@@ -78,7 +78,7 @@ Sign Up
                   <select name="channel">
                     <option value=""disabled selected>Profession</option>
                     @foreach($occupations as $occ)
-                    <option value={{$occ->id}}>{{$occ->occupation}}</option>
+                    <option value={{ $occ->id }}>{{$occ->occupation}}</option>
                     @endforeach
                   </select>
                   </div>

@@ -22,6 +22,7 @@ class UserController extends Controller{
       $client=new Client();
       $body=$client->get('http://localhost:3000/public/information/occupations')->getBody();
       $occupation=json_decode($body);
+      // return ($occupation[0]->id);
       return view('signup',['occupations'=>$occupation]);
   
     }
@@ -56,7 +57,7 @@ class UserController extends Controller{
         'first_name' =>$request['first_name'],
         'second_name' =>$request['last_name'],
         'gender' => $request['gender'],
-        'occupation_id' => 1,
+        'occupation_id' => $request['channel'],
         'avatar' => $avatar
 
       ]
