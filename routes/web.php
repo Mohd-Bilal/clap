@@ -55,7 +55,7 @@ use App\Events\MessagePosted;
    Route::get('account',[
        'uses' => 'UserController@getAccount',
        'as' =>'account',
-  ])->middleware('auth');
+  ]);
 
   Route::post('updateaccount',[
   'uses' => 'UserController@postSaveAccount',
@@ -70,12 +70,12 @@ use App\Events\MessagePosted;
     'uses'=>'UserController@myposts',
     'as'=>'myposts'
 
-  ])->middleware('auth');
+  ]);
   Route::get('mychats',[
     'uses'=>'UserController@mychats',
     'as'=>'mychats'
 
-  ])->middleware('auth');
+  ]);
   Route::get('adduserfield',function(){
     return view('interest');
     
@@ -118,11 +118,11 @@ use App\Events\MessagePosted;
 
   Route::get('/chat',function(){
      return view ('chat');
-   })->middleware('auth');
+   });
 
   Route::get('/messages',function(){
       return App\Message::with('user')->get();
-    })->middleware('auth');
+    });
 
   Route::post('/messages', function () {
       // Store the new message
@@ -134,7 +134,7 @@ use App\Events\MessagePosted;
       // Announce that a new message has been posted
       broadcast(new MessagePosted($message, $user))->toOthers();
       return ['status' => 'OK'];
-  })->middleware('auth');
+  });
 
 
 Route::group(['prefix' => 'admin'], function () {
