@@ -29,8 +29,11 @@ class PostController extends Controller{
 
     ])->getBody();
     $obj = json_decode($body);
-    if($obj->state == "success"){
+    if($obj->state == "success" && $obj->description_slug == "success-feeds"){
         return view('dashboard',['posts'=>$obj->data]);
+    }
+    else {
+      return view('dashboard',['posts'=>$obj->description_slug]);
     }
   }
 

@@ -66,6 +66,8 @@ Dashboard
             <div class='col-md-3'></div>
             <div class='col-md-9'>-->
 
+@if ($posts != "success-feeds-empty")
+
 
 @foreach($posts as $post)
       <article data-postid='{{$post->id}}'>
@@ -79,12 +81,13 @@ Dashboard
            <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>
            &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&npbsp&nbsp
            <a href='{{route('post.delete',['post.id' => $post->id])}}'>Delete</a>&nbsp&nbsp
-           <a href='#'>Report</a> 
+           <a href='#'>Report</a>
        </p>          --}}
        </div>
      </article>
 
 @endforeach
+@endif
             </div>
         </div>
 
