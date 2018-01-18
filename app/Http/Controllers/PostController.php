@@ -62,20 +62,13 @@ class PostController extends Controller{
       return ($body);
 
     }
-
-<<<<<<< HEAD
-    public function fetchfields(){
+    public function fetchfield(){
       $client=new Client();
       $body=$client->get('http://localhost:3000/public/information/fields')->getBody();
       $interests=json_decode($body);
       return response()->json(['fields'=>$interests]);
-    }
-    
-    public function getDeletePost($post_id)
-
-=======
+    } 
     public function getDeletePost($post_id,Request $request)
->>>>>>> 26251d4ef5dc657f85940ab1821b98fd66e7158f
     {
       $client=new Client();
       $value = $request->session()->get('jwt_token');
