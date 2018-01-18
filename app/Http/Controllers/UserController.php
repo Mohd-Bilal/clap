@@ -37,19 +37,20 @@ class UserController extends Controller{
     $value = $request->session()->get('jwt_token');
     if($value){
     $client = new Client(); //GuzzleHttp\Client
-      $body = $client->request('POST', 'http://localhost:3000', [
+      $body = $client->request('POST', 'http://localhost:3000/private/update/profile/fields/', [
         'headers' => [
           'Authorization' => 'Bearer '.$value
         ],
         'debug' => false,
         'json' =>[
-          'add' => [1]
+          'add' => $request['fields'],
+          'sub' => []
         ]
 
         ])->getBody();
         $obj = json_decode($body);
-        return ($obj->add_returns);
-        // return redirect()->route('dashboard');
+        return response()->json(['message'=>$obj]);
+        
     }
   }
 

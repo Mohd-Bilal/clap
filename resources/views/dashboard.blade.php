@@ -145,6 +145,7 @@ var url='{{route('edit')}}';
 var likeurl='{{route('like')}}';
 var  dashboard='{{route('dashboard')}}';
 var createpost='{{route('createpost')}}';
+
 </script>
 </div>
 @endsection
