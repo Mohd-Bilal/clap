@@ -33,27 +33,32 @@ body{
         margin-right: 0px;
         margin-top: 0px;
         padding-top: 0px;
+        background:-webkit-linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.3));
+    background: -moz-linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.3));
+    -webkit-text-fill-color: #f0f0f0;
 
 
     }
     
     .col-md-9{
-        background-color: #ECF0F1;
+       
         margin-right: 0px;
-        margin-top: 0px;
+        margin-top: 30px;
         padding-right: 4%;
         padding-top: 3%;
         padding-left:4%;
         padding-bottom: 40px;
+        color:white;
 
     }
     body{
-        background-image:url('../img/bg2.jpg');
+        background-image:url('../img/bb2.jpg');
       }
       .left{
         padding-left: 20px;
         padding-top: 30px;
           color: white;
+          background-color: rgba(0,0,0,0);
         
       }
       .left h5{
@@ -67,7 +72,10 @@ body{
       color:#979A9A;
       
       }
+.form-control{
+  background-color: rgba(0,0,0,0.2);
 
+}
 
 
 .bton{
@@ -85,7 +93,7 @@ body{
 .bton:focus{
   
   box-shadow: 0 0 10px black;
-   background-color: white;
+   background-color: grey;
    color:black;
     outline: none !important;
     border:none;
@@ -94,8 +102,8 @@ body{
 }
  .form-control{
         border-width: 2px;
-        border-color:rgba(0,0,0,0.5);
-        background-color: rgba(0,0,0,0);
+        border-color:rgba(0,0,0,0);
+       
     }
     .form-control:focus {
     outline: none !important;

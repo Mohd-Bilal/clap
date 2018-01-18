@@ -28,13 +28,15 @@ class PostController extends Controller{
         ]
 
         ])->getBody();
-
         $obj = json_decode($body);
-        if($obj->state == "success" && $obj->description_slug == "success-feeds"){
+        $fields=$client->get('http://localhost:3000/public/information/fields')->getBody();
+        $interests=json_decode($fields);
+        // return($interests);
+      if($obj->state == "success" && $obj->description_slug == "success-feeds"){
 
-          return view('dashboard',['posts'=>$obj->data]);
+          return view('dashboard',['posts'=>$obj->data,'fields'=>$interests]);
         }
-        else {
+      else {
           return view('dashboard',['posts'=>$obj->description_slug]);
         }
     }
@@ -60,7 +62,11 @@ class PostController extends Controller{
       return ($body);
 
     }
-
+    public function fetchfields(){
+      
+      return response()->json(['fields'=>$interests]);
+    }
+    
     public function getDeletePost($post_id)
     {
       $post = Post::where('id',$post_id) ->first();

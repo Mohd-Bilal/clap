@@ -125,11 +125,32 @@
         </div>
         <div class="modal-body">
           <label>Add tags</label>
-          <input type='checkbox' id='t1' value='t1'>Arts</input>
-          <input type='checkbox' id='t2' value='t2'>Science</input>
-          <input type='checkbox' id='t3' value='t3'>Tech</input>
-          <input type='checkbox' id='t4' value='t4'>Music</input>
-          <input type='checkbox' id='t5' value='t5'>Business</input>
+          <div class="container">
+         
+              <div class="dropdown col-md-6">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Tags
+                <span class="caret"></span></button>
+                @foreach($fields as $field)
+                <option class="dropdown-menu">
+              
+                  <li class="dropdown-submenu">
+                    <a class="test" tabindex="-1" href="#" id='{{$field->id}}'>{{$field->field_name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-menu-form" role="menu">
+                        <li>
+                            <label class="checkbox submenu">
+                                <input type="checkbox">
+                        
+                            </label>
+                        </li>
+                        
+                      </ul>    
+                      </li>
+                </option>    
+                @endforeach
+                  {{--  </li>
+                </ul>  --}}
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary bton" id='tagsave'>Save </button>

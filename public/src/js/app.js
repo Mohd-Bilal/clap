@@ -27,9 +27,28 @@ $('#modal-save').on('click',function(){
             $('#editmodal').modal('hide');
         });
 });
+$("document").ready(function() {
 
-
-
+    $('.dropdown-menu').on('click', function(e) {
+        if($(this).hasClass('dropdown-menu-form')) {
+            e.stopPropagation();
+        }
+    });
+  });
+$(document).ready(function(){
+    $('.dropdown-submenu a.test').on("click", function(e){
+      $(this).next('ul').toggle();
+    
+      e.stopPropagation();
+      e.preventDefault();
+    });
+  });
+$('.test').on('click',function(event){
+    var postid=this.id;
+    var url='http://localhost:3000/public/information/field/'+postid+'/sub_fields';
+    var fetch=$.get(url);
+    console.log(fetch);
+});
 
 // $('#like').on('click',function(event){
 
@@ -47,7 +66,7 @@ $('.fields').on('click',function(event){
     userfield.splice(index,1);
     x.style.color='white';
 }
-    console.log(userfield);
+    // console.log(userfield);
 });
 $('#submit-fields').on('click',function(){
     $.ajax({
