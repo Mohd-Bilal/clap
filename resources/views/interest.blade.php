@@ -2,7 +2,7 @@
 
 
 @section('title')
-Dashboard
+User Interests
 @endsection
 @include('postvalidate')
 @section('content')
@@ -50,11 +50,12 @@ Dashboard
                      @foreach($fields as $field) 
                       <div class="big notes-thumb col-md-6" >
                         <span class="icon-font" aria-hidden="true"></span>
-                        <p id={{ $field->id }}>{{$field->field_name}}</p>
+                        <p id={{ $field->id }} class='fields' name='unset'>{{$field->field_name}}</p>
                       </div>
                     
                     @endforeach
                     </div>
+                    <button id='submit-fields'>Submit</button>
                       {{--  <div class="small lock-thumb">
                          <p>Biology & Management</p>
                       </div>
@@ -127,8 +128,10 @@ Dashboard
     
     
   
-    
-        
+<script>
+    var x='{{route('sendfield')}}'; 
+
+</script>        
     
 
 

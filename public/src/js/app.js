@@ -1,7 +1,7 @@
 var postid=-1;
 var postBody=null;
 var msg=null;
-
+var userfield= new Array();
 $('.editpost').on('click',function(event){
     event.preventDefault();
     postBody=event.target.parentNode.parentNode.parentNode.childNodes[4];
@@ -27,10 +27,42 @@ $('#modal-save').on('click',function(){
             $('#editmodal').modal('hide');
         });
 });
+<<<<<<< HEAD
 
 
 
 $('#like').on('click',function(event){
+=======
+$('.fields').on('click',function(event){
+    var fieldid=$(this).attr("id");
+    var x=document.getElementById(fieldid);
+    if(x.getAttribute("name")=='unset'){
+        x.setAttribute("name",'set');
+        userfield.push(fieldid);
+        x.style.color='black';
+    }
+    else{
+    x.setAttribute("name",'unset');
+    const index = userfield.indexOf(fieldid);
+    userfield.splice(index,1);
+    x.style.color='white';
+}
+    console.log(userfield);
+});
+$('#submit-fields').on('click',function(){
+    $.ajax({
+        method:'GET',
+        url:x,
+        data:{
+            fields:userfield
+        }
+    })
+    .done(function(msg){
+        window.location.href='/dashboard' ;
+    });  
+});
+$('.like').on('click',function(event){
+>>>>>>> 2ef8c6a96976a618c32aeacb46963ea6b706ffa6
     event.preventDefault();
 
 

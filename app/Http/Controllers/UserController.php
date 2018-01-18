@@ -37,19 +37,20 @@ class UserController extends Controller{
     $value = $request->session()->get('jwt_token');
     if($value){
     $client = new Client(); //GuzzleHttp\Client
-      $body = $client->request('POST', 'http://localhost:3000', [
+      $body = $client->request('POST', 'http://localhost:3000/private/update/profile/fields/', [
         'headers' => [
           'Authorization' => 'Bearer '.$value
         ],
         'debug' => false,
         'json' =>[
-          'add' => [1]
+          'add' => $request['fields'],
+          'sub' => []
         ]
 
         ])->getBody();
         $obj = json_decode($body);
-        return ($obj->add_returns);
-        // return redirect()->route('dashboard');
+        return response()->json(['message'=>$obj]);
+
     }
   }
 
@@ -84,11 +85,13 @@ class UserController extends Controller{
         'second_name' =>$request['last_name'],
         'gender' => $request['gender'],
         'occupation_id' => $request['channel'],
-        'avatar' => $avatar
+        'avatar' => $avatar,
+        'date_of_birth' => "1996-4-3"
 
       ]
     ])->getBody();
     $obj = json_decode($body);
+    
     //signin
     if($obj->state=="failure")
       return($obj->description);
@@ -325,7 +328,7 @@ class UserController extends Controller{
   }
   public function myposts()
   {
-    
+
     return view('myposts');
 
 
