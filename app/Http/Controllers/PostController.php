@@ -61,14 +61,25 @@ class PostController extends Controller{
 
     }
 
-    public function getDeletePost($post_id)
+    public function getDeletePost($post_id,Request $request)
     {
-      $post = Post::where('id',$post_id) ->first();
-      if (Auth::user() != $post->user){
-        return redirect()->back();
+      $client=new Client();
+      $value = $request->session()->get('jwt_token');
+      $body=$client->request('POST','http://localhost:3000/private/delete/post',[
+        'headers'=>[
+          'Authorization'=>'Bearer '.$value
+        ],
+        'json'=>[
+          'post_id'=>$post_id,
+          ]
+      ])->getBody();
+      $obj = json_decode($body);
+      if($obj->state=="success"){
+        return redirect()->route('dashboard')->with(['message' => 'Successfully Deleted!']);
       }
-      $post->delete();
-      return redirect()->route('dashboard')->with(['message' => 'Successfully Deleted!']);
+      else {
+        return redirect()->route('dashboard')->with(['message' => 'Not Able to Delete Post']);
+      }
     }
 
     public function editPost(Request $request){
