@@ -81,6 +81,10 @@ use App\Events\MessagePosted;
     'uses'=>'UserController@Fetchfield',
     'as'=> 'adduserfield'
   ]);
+  Route::get('sendfield',[
+    'uses'=>'UserController@sendField',
+    'as'=> 'sendfield'
+  ]);
   
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',

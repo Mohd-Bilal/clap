@@ -42,23 +42,7 @@ class PostController extends Controller{
     }
   }
 
-    public function createPost(Request $request){
-      // $post=new Post();
-      // $passedtag=['t1'=>$request['t1'],'t2'=>$request['t2'],'t3'=>$request['t3'],'t4'=>$request['t4'],'t5'=>$request['t5']];
-      // $tags=serialize($passedtag);
-      // $message='Body field required';
-      // if($request['body']){
-      //   $post->body=$request['body'];
-      //   $post->tags=$tags;
-      //   $this->validate($request,[
-      //     'body'=>'required|max:1000'
-      //   ]);
-      //   if($request->user()->posts()->save($post)){
-      //     $message='Post successfully created';
-      //   }
-      // }
-
-      // return response()->json(['message'=>$message,'body'=>$request['body']], 200);
+    public function createPost(Request $request){     
       $client=new Client();
       $value = $request->session()->get('jwt_token');
       $body=$client->request('POST','http://localhost:3000/private/create/post/',[
@@ -66,11 +50,13 @@ class PostController extends Controller{
           'Authorization'=>'Bearer '.$value
         ],
         'json'=>[
-          'post_content'=>$request['body']
-        
+          'post_content'=>$request['body'],
+          'post_text'=>null,
+          'post_image'=>null
           ]
-      ])->getBody();
-      return($body);
+      ])->getBody();   
+      return ($body);
+  
     }
 
     public function getDeletePost($post_id)
@@ -94,19 +80,19 @@ class PostController extends Controller{
 
     }
 
-    public function likecount($postid){
-      $postlike=DB::table('likes')->get()->where('post_id',$postid);
-      $lcount=0;
-      $dcount=0;
-      foreach($postlike as &$likepost){
-        if($likepost->like)
-        $lcount++;
-        else
-        $dcount++;
+    // public function likecount($postid){
+    //   $postlike=DB::table('likes')->get()->where('post_id',$postid);
+    //   $lcount=0;
+    //   $dcount=0;
+    //   foreach($postlike as &$likepost){
+    //     if($likepost->like)
+    //     $lcount++;
+    //     else
+    //     $dcount++;
 
-      }
-      return ['likes'=>$lcount,'dislikes'=>$dcount];
-    }
+    //   }
+    //   return ['likes'=>$lcount,'dislikes'=>$dcount];
+    // }
     public function postLike(Request $request){
       $count=0;
       $update=false;

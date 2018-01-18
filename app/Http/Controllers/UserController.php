@@ -33,6 +33,26 @@ class UserController extends Controller{
       return view('interest',['fields'=>$interests]);
 
   }
+  public function sendField(Request $request){
+    $value = $request->session()->get('jwt_token');
+    if($value){
+    $client = new Client(); //GuzzleHttp\Client
+      $body = $client->request('POST', 'http://localhost:3000/private/update/post/like', [
+        'headers' => [
+          'Authorization' => 'Bearer '.$value
+        ],
+        'debug' => false,
+        'json' =>[
+          'add' => [1]
+        ]
+
+        ])->getBody();
+        $obj = json_decode($body);
+        return ($obj->add_returns);
+        // return redirect()->route('dashboard');
+    }
+  }
+
 
   public function Signup(Request $request){
     $this->validate($request,[

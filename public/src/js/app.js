@@ -67,14 +67,15 @@ $('#tagsave').on('click',function(event){
     .done(function(msg){
        
         $('#tagmodal').modal('hide');
-        if(msg['message']=='Post successfully created'){
-        // location.reload(true);
-        document.getElementById('success').innerHTML=msg['message'];
+        var body = JSON.parse(msg);
+        console.log(body["state"]);
+        if(body["state"]=='success'){
+        location.reload(true);
+         document.getElementById('success').innerHTML=body["description"];
         }
         else
-        document.getElementById('error').innerHTML=msg['message'];
-        
-        
+        document.getElementById('error').innerHTML=body["description"];
+       
     });
 
 });
