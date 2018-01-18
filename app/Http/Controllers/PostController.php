@@ -31,7 +31,7 @@ class PostController extends Controller{
 
         $obj = json_decode($body);
         if($obj->state == "success" && $obj->description_slug == "success-feeds"){
-          return($obj->data);
+          
           return view('dashboard',['posts'=>$obj->data]);
         }
         else {

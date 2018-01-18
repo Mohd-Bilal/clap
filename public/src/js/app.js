@@ -27,12 +27,12 @@ $('#modal-save').on('click',function(){
             $('#editmodal').modal('hide');
         });
 });
-<<<<<<< HEAD
 
 
 
-$('#like').on('click',function(event){
-=======
+
+// $('#like').on('click',function(event){
+
 $('.fields').on('click',function(event){
     var fieldid=$(this).attr("id");
     var x=document.getElementById(fieldid);
@@ -59,10 +59,10 @@ $('#submit-fields').on('click',function(){
     })
     .done(function(msg){
         window.location.href='/dashboard' ;
-    });  
+    });
 });
-$('.like').on('click',function(event){
->>>>>>> 2ef8c6a96976a618c32aeacb46963ea6b706ffa6
+$('#like').on('click',function(event){
+
     event.preventDefault();
 
 
