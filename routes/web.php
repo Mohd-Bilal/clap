@@ -85,7 +85,7 @@ use App\Events\MessagePosted;
     'uses'=>'UserController@sendField',
     'as'=> 'sendfield'
   ]);
-  
+
     Route::get('dashboard',[
         'uses' => 'PostController@getDashboard',
         'as' =>'dashboard',
@@ -105,7 +105,7 @@ use App\Events\MessagePosted;
         'as'=>'edit'
  ]);
 
- Route::post('/like',[
+ Route::post('like',[
     'uses' => 'PostController@postLike',
     'as'=>'like',
 

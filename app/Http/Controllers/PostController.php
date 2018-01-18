@@ -31,6 +31,7 @@ class PostController extends Controller{
 
         $obj = json_decode($body);
         if($obj->state == "success" && $obj->description_slug == "success-feeds"){
+          return($obj->data);
           return view('dashboard',['posts'=>$obj->data]);
         }
         else {
@@ -42,7 +43,7 @@ class PostController extends Controller{
     }
   }
 
-    public function createPost(Request $request){     
+    public function createPost(Request $request){
       $client=new Client();
       $value = $request->session()->get('jwt_token');
       $body=$client->request('POST','http://localhost:3000/private/create/post/',[
@@ -54,9 +55,9 @@ class PostController extends Controller{
           'post_text'=>null,
           'post_image'=>null
           ]
-      ])->getBody();   
+      ])->getBody();
       return ($body);
-  
+
     }
 
     public function getDeletePost($post_id)
@@ -94,40 +95,37 @@ class PostController extends Controller{
     //   return ['likes'=>$lcount,'dislikes'=>$dcount];
     // }
     public function postLike(Request $request){
-      $count=0;
-      $update=false;
-      $postid=$request['postId'];
-      $islike=$request['isLike']==='true';
-      $post=Post::find($postid);
-      if(!$post){
-        return null;
-      }
-      $user=Auth::user();
-      $likes=$user->likes()->where('post_id',$postid)->first();
+      $value = $request->session()->get('jwt_token');
 
-      if($likes){
-        $alreadylike=$likes->like;
-        $update=true;
-        if($alreadylike==$islike){
-          $likes->delete();
-
+      if($value){
+        $client = new Client(); //GuzzleHttp\Client
+        if($request['Like']=='like'){
+          $like="add";
         }
-      }else{
-        $likes=new Like();
-      }
-      $likes->like=$islike;
-      $likes->user_id=$user->id;
-      $likes->post_id=$postid;
-      if($update){
-        $likes->update();
-      }
-      else{
-        $likes->save();
-      }
-      $count=$this->likecount($postid);
+        elseif($request['Like']=='unlike'){
+          $like="add";
+        }
+        $body = $client->request('POST', 'http://localhost:3000/private/update/post/like', [
+          'headers' => [
+            'Authorization' => 'Bearer '.$value
+          ],
+          'debug' => false,
+          'json' =>[
+            $like => [1]
+          ]
+
+          ])->getBody();
+
+          $obj = json_decode($body);
+          return($body);
+          return($obj->add_returns);
+
 
       return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
     }
-
-
   }
+
+
+
+
+}

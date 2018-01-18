@@ -28,26 +28,48 @@ $('#modal-save').on('click',function(){
         });
 });
 
-$('.like').on('click',function(event){
+
+
+$('#like').on('click',function(event){
     event.preventDefault();
-    var postid=event.target.parentNode.parentNode.parentNode.dataset['postid'];
-    var isLike=event.target.previousElementSibling==null;
+
+
+    var isLike=document.getElementById('like');
+    if(isLike.getAttribute("class")=="liked"){
+    isLike.setAttribute("class","unliked");
+    console.log(isLike.getAttribute("class"));
+    $.ajax({
+        method:'POST',
+        url:likeurl,
+        data:{Like:'unlike',_token:token}
+
+    })
+    .done(function(msg) {
+            console.log("ajax liked");
+            document.getElementById('like').innerText="Like";
+
+    });
+
+    }
+    else{
+    isLike.setAttribute("class","liked");
+    console.log(isLike.getAttribute("class"));
 
     $.ajax({
         method:'POST',
         url:likeurl,
-        data:{isLike:isLike,postId: postid,_token:token}
+        data:{Like:'like',_token:token}
 
     })
     .done(function(msg) {
-            
-            event.target.innerText = isLike ? event.target.innerText == (msg['number']-1)+' Like'?msg['number']+' You liked this post' :msg['number']+' Like' : event.target.innerText == (msg['dislikes']-1)+' Dislike' ? msg['dislikes']+' You disliked this post':msg['dislikes']+' Dislike';
-            if (isLike) {
-                event.target.nextElementSibling.innerText = msg['dislikes']+' Dislike';
-            } else {
-                event.target.previousElementSibling.innerText = msg['number']+' Like';
-            }
+          console.log("ajax unliked");
+          document.getElementById('like').innerText="Liked";
+
+
     });
+    }
+
+
 });
 
 
@@ -65,7 +87,7 @@ $('#tagsave').on('click',function(event){
 
     })
     .done(function(msg){
-       
+
         $('#tagmodal').modal('hide');
         var body = JSON.parse(msg);
         console.log(body["state"]);
@@ -75,7 +97,7 @@ $('#tagsave').on('click',function(event){
         }
         else
         document.getElementById('error').innerHTML=body["description"];
-       
+
     });
 
 });
@@ -84,6 +106,6 @@ $('#changepwd').on('click',function(){
     if(x.style.display==="none")
         x.style.display="block";
     else
-        x.style.display="none";    
+        x.style.display="none";
 
 });
