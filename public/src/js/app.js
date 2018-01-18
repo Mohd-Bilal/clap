@@ -53,22 +53,22 @@ $('.like').on('click',function(event){
 
 $('#tagsave').on('click',function(event){
     var body=document.getElementById('newpost').value;
-    var t1=document.getElementById('t1').checked;
-    var t2=document.getElementById('t2').checked;
-    var t3=document.getElementById('t3').checked;
-    var t4=document.getElementById('t4').checked;
-    var t5=document.getElementById('t5').checked;
+    // var t1=document.getElementById('t1').checked;
+    // var t2=document.getElementById('t2').checked;
+    // var t3=document.getElementById('t3').checked;
+    // var t4=document.getElementById('t4').checked;
+    // var t5=document.getElementById('t5').checked;
     $.ajax({
         method:'POST',
         url:createpost,
-        data:{t1:t1,t2:t2,t3:t3,t4:t4,t5:t5,body:body,_token:token}
+        data:{body:body,_token:token}
 
     })
     .done(function(msg){
        
         $('#tagmodal').modal('hide');
         if(msg['message']=='Post successfully created'){
-        location.reload(true);
+        // location.reload(true);
         document.getElementById('success').innerHTML=msg['message'];
         }
         else
