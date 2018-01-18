@@ -68,7 +68,7 @@ class UserController extends Controller{
 
     ]);
 
-    $interest=['i1'=>$request['i1']?1:-1,'i2'=>$request['i2']?1:-1,'i3'=>$request['i3']?1:-1,'i4'=>$request['i4']?1:-1,'i5'=>$request['i5']?1:-1];
+  
     if ($request['gender']=='M')
     $avatar='/src/img/dummymale.jpg';
     else
@@ -91,7 +91,7 @@ class UserController extends Controller{
       ]
     ])->getBody();
     $obj = json_decode($body);
-    
+
     //signin
     if($obj->state=="failure")
       return($obj->description);

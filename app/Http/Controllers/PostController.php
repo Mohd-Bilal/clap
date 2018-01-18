@@ -53,7 +53,8 @@ class PostController extends Controller{
         'json'=>[
           'post_content'=>$request['body'],
           'post_text'=>null,
-          'post_image'=>null
+          'post_image'=>null,
+          'sub_field_add'=>['1']
           ]
       ])->getBody();
       return ($body);
