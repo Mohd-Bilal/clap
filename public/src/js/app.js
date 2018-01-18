@@ -65,11 +65,8 @@ $('.like').on('click',function(event){
 
     // event.preventDefault();
     var post_id=event.target.parentNode.parentNode.dataset['postid'];
-
-    console.log(post_id);
     if(this.id=="liked"){
     this.id="unliked";
-    console.log(this.id);
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -85,9 +82,7 @@ $('.like').on('click',function(event){
 
     }
     else{
-    this.id="liked";;
-    console.log(this.id);
-
+    this.id="liked";
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -97,6 +92,8 @@ $('.like').on('click',function(event){
     .done(function(msg) {
           console.log("ajax liked");
           // var body = JSON.parse(msg);
+          document.getElementsByName(msg["post_id"]).innerText="Liked";
+          console.log(document.getElementsByName(msg["post_id"]).innerText);
           document.getElementsByName(msg["post_id"]).innerText="Liked";
 
 
