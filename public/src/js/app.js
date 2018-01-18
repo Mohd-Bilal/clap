@@ -2,6 +2,9 @@ var postid=-1;
 var postBody=null;
 var msg=null;
 var userfield= new Array();
+
+$("#count").load("dashboard.blade.php #count");
+
 $('.editpost').on('click',function(event){
     event.preventDefault();
     postBody=event.target.parentNode.parentNode.parentNode.childNodes[4];
@@ -84,11 +87,8 @@ $('.like').on('click',function(event){
 
     // event.preventDefault();
     var post_id=event.target.parentNode.parentNode.dataset['postid'];
-
-    console.log(post_id);
-    if(this.id=="liked"){
-    this.id="unliked";
-    console.log(this.id);
+    if(this.id=="unliked"){
+    this.id="liked";
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -104,9 +104,7 @@ $('.like').on('click',function(event){
 
     }
     else{
-    this.id="liked";;
-    console.log(this.id);
-
+    this.id="unliked";
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -116,6 +114,8 @@ $('.like').on('click',function(event){
     .done(function(msg) {
           console.log("ajax liked");
           // var body = JSON.parse(msg);
+          document.getElementsByName(msg["post_id"]).innerText="Liked";
+          console.log(document.getElementsByName(msg["post_id"]).innerText);
           document.getElementsByName(msg["post_id"]).innerText="Liked";
 
 
