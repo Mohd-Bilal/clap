@@ -40,7 +40,7 @@ Dashboard
         <div class='col-md-3 container-fluid eq_height '>
           <div class="left">
             <h5>Your Chats</h5>
-            <img src='{{Auth::user()->avatar}}' class='img-responsive' style='height:175px;' alt='Profile picture'>
+           
           </div>
         </div>
         <div class='col-md-9 container-fluid eq_height'>

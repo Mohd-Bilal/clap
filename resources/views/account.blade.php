@@ -34,22 +34,22 @@ Account
 
 
     <section class="row new-post">
-      <div class="col-md-3"><div class="left"><h5>{{ $user->first_name }}&nbsp{{ $user->last_name }}</h5>
-        <h6>@<span>{{ $user->username }}</span></h6></div></div>
+      <div class="col-md-3"><div class="left"><h5>first name last name</h5>
+        <h6>@<span>username</span></h6></div></div>
         <div class="col-md-9">
             <header><h3>Your Account</h3></header>
             <form action="{{ route('account.save') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" class="form-control" value="{{ $user->first_name }}" id="first_name">
+                    <input type="text" name="first_name" class="form-control" value="" id="first_name">
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" value="{{ $user->last_name }}" id="last_name">
+                    <input type="text" name="last_name" class="form-control" value="" id="last_name">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" value="{{ $user->email }}" id="email">
+                    <input type="text" name="email" class="form-control" value="" id="email">
                 </div>
                 <div class='form-group'>
                     <button  id='changepwd' name='changepwd' type="button">Change Password</button>
@@ -71,11 +71,11 @@ Account
             </form>
         <!--</div>
     </section>-->
-    @if (Storage::disk('local')->has($user->first_name . '-' . $user->id . '.jpg'))
+    
         <!--<section class="row new-post">
             <div class="col-md-6 col-md-offset-3">-->
-                <img src="{{ route('account.image', ['filename' => $user->first_name . '-' . $user->id . '.jpg']) }}" alt="" class="img-responsive" style="height:200px;">
+                <img src="" alt="" class="img-responsive" style="height:200px;">
             </div>
         </section>
-    @endif
+    
 @endsection

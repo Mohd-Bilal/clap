@@ -305,8 +305,8 @@ class UserController extends Controller{
   }
   public function myposts()
   {
-    $post=Auth::user()->posts();
-    return view('myposts',['posts'=>$post]);
+    
+    return view('myposts');
 
 
   }

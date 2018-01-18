@@ -50,7 +50,7 @@
 
 
         <div class='form-group'>
-          <textarea name='body' id='newpost' class='form-control'  rows='7' placeholder='What do you have to say?'></textarea>
+          <textarea name='body' id='newpost' class='form-control'  rows='7' placeholder='Share your thoughts here..'></textarea>
         </div>
         <button type='submit' class='bton' id='postit'>Post</button>
 

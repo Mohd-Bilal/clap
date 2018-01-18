@@ -12,6 +12,7 @@
 }
 
 
+
 .post{
     border-left-color: rgb(228, 98, 98);
     }
@@ -23,7 +24,7 @@
     }
     
     .col-md-9{
-        background-color: #ECF0F1;
+        background-color: transparent;
         margin-right: 0px;
         margin-top: 0px;
         padding-right: 4%;
@@ -48,8 +49,8 @@
       }
      
 .info{
-    
-    color:black;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
     font-size: 17px;
 
 }    
@@ -61,7 +62,7 @@
     font-size: 35px;
 }
 article{
-    background-color: white;
+    background-color: rgba(0,0,0,0.7);
     padding-left: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -101,12 +102,12 @@ h5{
 }
 .bton{
    
-    background-color: black;
+    background-color: white;
     border-width: 0px;
     text-decoration: none;
     margin-bottom: 8px;
     padding:10px;
-    color:white;
+    color:black;
     border-radius: 3px;
      padding-left: 20px;
     padding-right: 20px;
@@ -126,8 +127,8 @@ h5{
 .bton:focus{
   
   box-shadow: 0 0 10px black;
-   background-color: white;
-   color:black;
+   background-color: black;
+   color:white;
     outline: none !important;
     border:none;
 
@@ -145,12 +146,13 @@ h5{
 }
  .form-control{
         border-width: 0px;
-        border-radius: 0px;
+        border-radius: 4px;
+        background: rgba(0,0,0,0.6);
        
     }
     .form-control:focus {
     outline: none !important;
-    border:1px solid rgba(0,0,0,0.8);
+    border:1px solid rgba(255,255,255,0.8);
     box-shadow: 0 0 10px black;
 }
  
@@ -206,20 +208,22 @@ h3{
 ::-webkit-input-placeholder{
     font-size: 20px;
     opacity:1;
+    color:blue;
+
 
 }
 ::-moz-placeholder { 
-  color:rgba(0,0,0,0.8);
+  color:white;
    opacity:1;
    font-size: 20px;
 }
 :-ms-input-placeholder { 
-  color: rgba(0,0,0,0.8);
+  color: white;
    opacity:1;
    font-size: 20px;
 }
 :-moz-placeholder { 
-  color:rgba(0,0,0,0.8);
+  color:white;
    opacity:1;
    font-size: 20px;
 }
