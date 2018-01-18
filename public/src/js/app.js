@@ -50,7 +50,7 @@ $('.test').on('click',function(event){
     var postid=this.id;
     var url='http://localhost:3000/public/information/field/'+postid+'/sub_fields';
     var fetch=$.get(url);
-    console.log(fetch);
+    
 });
 
 // $('#like').on('click',function(event){

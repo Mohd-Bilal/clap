@@ -28,7 +28,7 @@ Sign In
                 <form action="{{route('postsignin')}}" method="post">
                   <div class='form-group {{$errors -> has('email') ? 'has-error' : '' }}'>
                     
-                    <input class='form-control' type='text' name='username' id='name' value="{{ Request::old('username')}}" placeholder="Username">
+                    <input class='form-control' type='text' name='username' id='name' placeholder="Username">
                   
                 </div>
 
