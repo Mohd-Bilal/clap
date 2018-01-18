@@ -72,7 +72,7 @@
         @foreach($posts as $post)
           <article data-postid='{{$post->id}}'>
             <div class='info'>
-              {{$post->author[0]->username}} <br></div><div class="details">{{date("H:i:s | Y-m-d", strtotime($post->createdAt))}}
+              {{$post->author->username}} <br></div><div class="details">{{date("H:i:s | Y-m-d", strtotime($post->createdAt))}}
               </div>
               <p class="postcont">{{$post->post_content}}</p>
               <div class='interaction'>
