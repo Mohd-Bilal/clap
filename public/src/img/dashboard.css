@@ -84,15 +84,6 @@
 .interaction{
   color:#D0D3D4  ;
 }
-#liked{
-  color:#D0D3D4;
-}
-#unliked{
-  color:rgb(16, 158, 206);
-}
-.likecount{
-  color:#D0D3D4;
-}
 article{
     background-color: rgba(0,0,0,0.7);
     padding-left: 4%;

@@ -46,7 +46,7 @@ Dashboard
         <div class='col-md-3 col-sm-12 container-fluid eq_height '>
           <div class="left">
         
-         {{--  <img src='{{Auth::user()->avatar}}' class='img-responsive'  alt='Profile picture'>   --}}
+         <img src='{{Auth::user()->avatar}}' class='img-responsive'  alt='Profile picture'> 
          <h5>John appleseed</h5>
          <p class="des">Profession<br>
          25,&nbspMale<br>

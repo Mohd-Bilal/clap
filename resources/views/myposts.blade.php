@@ -139,11 +139,9 @@
                   <p class="postcont">HELLO WORLD</p>
                   <div class='interaction'>
                     <p>
-                      <a href='#' class='like' >LIKE</a>&nbsp&nbsp
-                      <a href='#' class='like' >DISLIKE</a>
-                      &nbsp&nbsp<a href='#' class='editpost'>Edit</a>&nbsp&nbsp
-                      <a href='#'>Delete</a>
-                      <a href="#" data-transition="ease" class="pull-right"><i class="fa"></i><span>replies</span></a>
+                      <a href='#' class='editpost' id='like'>Edit</a>&nbsp&nbsp
+                      <a href='#' id='like'>Delete</a>
+                      <a href="#" data-transition="ease" class="pull-right"><i class="fa"></i><span id='like'>Replies&nbsp&nbsp&nbsp</span></a>
 
 
                     </p>
