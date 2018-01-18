@@ -61,41 +61,43 @@ $('#submit-fields').on('click',function(){
         window.location.href='/dashboard' ;
     });
 });
-$('#like').on('click',function(event){
+$('.like').on('click',function(event){
 
-    event.preventDefault();
+    // event.preventDefault();
+    var post_id=event.target.parentNode.parentNode.dataset['postid'];
 
-
-    var isLike=document.getElementById('like');
-    if(isLike.getAttribute("class")=="liked"){
-    isLike.setAttribute("class","unliked");
-    console.log(isLike.getAttribute("class"));
+    console.log(post_id);
+    if(this.id=="liked"){
+    this.id="unliked";
+    console.log(this.id);
     $.ajax({
         method:'POST',
         url:likeurl,
-        data:{Like:'unlike',_token:token}
+        data:{Like:'unlike',post_id:post_id,_token:token}
 
     })
     .done(function(msg) {
-            console.log("ajax liked");
-            document.getElementById('like').innerText="Like";
+            console.log("ajax unliked");
+            // var body = JSON.parse(msg);
+            document.getElementsByName(msg["post_id"]).innerText="Like";
 
     });
 
     }
     else{
-    isLike.setAttribute("class","liked");
-    console.log(isLike.getAttribute("class"));
+    this.id="liked";;
+    console.log(this.id);
 
     $.ajax({
         method:'POST',
         url:likeurl,
-        data:{Like:'like',_token:token}
+        data:{Like:'like',post_id:post_id,_token:token}
 
     })
     .done(function(msg) {
-          console.log("ajax unliked");
-          document.getElementById('like').innerText="Liked";
+          console.log("ajax liked");
+          // var body = JSON.parse(msg);
+          document.getElementsByName(msg["post_id"]).innerText="Liked";
 
 
     });

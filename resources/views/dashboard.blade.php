@@ -77,7 +77,7 @@
               <p class="postcont">{{$post->post_content}}</p>
               <div class='interaction'>
                 <a>{{$post->like_count}}</a>
-                <a href="#" class="liked" id='like' name='like' >&nbspLike</a>
+                <a href="#" class="like" id='liked' name="{{$post->id}}" >&nbspLike</a>
                 {{--  <p>
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>

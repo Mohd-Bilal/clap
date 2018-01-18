@@ -31,7 +31,7 @@ class PostController extends Controller{
 
         $obj = json_decode($body);
         if($obj->state == "success" && $obj->description_slug == "success-feeds"){
-          
+
           return view('dashboard',['posts'=>$obj->data]);
         }
         else {
@@ -104,7 +104,7 @@ class PostController extends Controller{
           $like="add";
         }
         elseif($request['Like']=='unlike'){
-          $like="add";
+          $like="sub";
         }
         $body = $client->request('POST', 'http://localhost:3000/private/update/post/like', [
           'headers' => [
@@ -112,17 +112,13 @@ class PostController extends Controller{
           ],
           'debug' => false,
           'json' =>[
-            $like => [1]
+            $like => [$request['post_id']]
           ]
 
           ])->getBody();
 
           $obj = json_decode($body);
-          return($body);
-          return($obj->add_returns);
-
-
-      return response()->json(['number'=>$count['likes'],'dislikes'=>$count['dislikes']]);
+          return response()->json(['post_id'=>$request['post_id']]);
     }
   }
 
