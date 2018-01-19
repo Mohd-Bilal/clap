@@ -132,12 +132,13 @@
               <div class="dropdown col-md-6">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Tags
                 <span class="caret"></span></button>
+                <form action={{route('submitfields')}}>
                 @foreach($fields as $field)
                 <option class="dropdown-menu">
               
                   <li class="dropdown-submenu">
                     <a class="test" tabindex="-1" href="#" id='{{$field->id}}'>{{$field->field_name}} <span class="caret"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-form" role="menu">
+                    <ul class="dropdown-menu dropdown-menu-form" role="menu" id='{{-$field->id}}'>
                         <li>
                             <label class="checkbox submenu">
                                 <input type="checkbox">
@@ -149,6 +150,7 @@
                       </li>
                 </option>    
                 @endforeach
+            
                   {{--  </li>
                 </ul>  --}}
               </div>
@@ -156,6 +158,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary bton" id='tagsave'>Save </button>
+        </form>
           <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -169,7 +172,7 @@ var url='{{route('edit')}}';
 var likeurl='{{route('like')}}';
 var  dashboard='{{route('dashboard')}}';
 var createpost='{{route('createpost')}}';
-
+var sub='{{route('fetchsubfield')}}';
 </script>
 </div>
 @endsection

@@ -48,9 +48,21 @@ $(document).ready(function(){
   });
 $('.test').on('click',function(event){
     var postid=this.id;
-    var url='http://localhost:3000/public/information/field/'+postid+'/sub_fields';
-    var fetch=$.get(url);
-    
+    var suburl='http://localhost:3000/public/information/field/'+postid+'/sub_fields';
+    $.ajax({
+        method:'GET',
+        url:sub,
+        data:{field_id:postid,suburl:suburl}
+    })
+    .done(function(msg){
+        var y=new String;
+        $.each(msg['subfield'],function(key,value){
+            var x='<li><label class="checkbox submenu"><input type="checkbox" id='+value.id+'>'+value.sub_field_name+'</label></li>';
+            y=y+x;
+        });
+        // console.log(y);
+        document.getElementById(-msg['fieldid']).innerHTML=y;
+    })
 });
 
 // $('#like').on('click',function(event){

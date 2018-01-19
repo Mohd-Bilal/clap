@@ -68,6 +68,15 @@ class PostController extends Controller{
       $interests=json_decode($body);
       return response()->json(['fields'=>$interests]);
     } 
+    public function fetchsubfield(Request $request){
+      $client=new Client();
+      $body=$client->get($request['suburl'])->getBody();
+      $interests=json_decode($body);
+      return response()->json(['subfield'=>$interests,'fieldid'=>$request['field_id']]);
+      
+
+
+    }
     public function getDeletePost($post_id,Request $request)
     {
       $client=new Client();

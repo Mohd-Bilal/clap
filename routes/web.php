@@ -61,6 +61,11 @@ use App\Events\MessagePosted;
         'uses' => 'PostController@fetchfields',
         'as' => 'fetchfields'
    ]);
+   Route::get('fetchsubfield',[
+       'uses' => 'PostController@fetchsubfield',
+       'as' => 'fetchsubfield'
+   ]);
+
   Route::post('updateaccount',[
   'uses' => 'UserController@postSaveAccount',
   'as'   => 'account.save'
