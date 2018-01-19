@@ -172,7 +172,7 @@ class UserController extends Controller{
 
   public function getAccount()
   {
-    return view('account',['user' => Auth::user()]);
+    return view('account');
   }
 
   public function postSaveAccount(Request $request)

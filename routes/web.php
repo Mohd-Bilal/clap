@@ -76,7 +76,7 @@ use App\Events\MessagePosted;
     'as'   => 'account.image'
   ]);
   Route::get('myposts',[
-    'uses'=>'UserController@myposts',
+    'uses'=>'PostController@getMyPosts',
     'as'=>'myposts'
 
   ]);
