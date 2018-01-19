@@ -4,7 +4,7 @@ var msg=null;
 var userfield= new Array();
 var subfield=new Array;
 
-$("#count").load("dashboard.blade.php #count");
+
 
 $('.editpost').on('click',function(event){
     event.preventDefault();
@@ -42,7 +42,7 @@ $("document").ready(function() {
 $(document).ready(function(){
     $('.dropdown-submenu a.test').on("click", function(e){
       $(this).next('ul').toggle();
-    
+
       e.stopPropagation();
       e.preventDefault();
     });
@@ -96,14 +96,14 @@ $('#submit-fields').on('click',function(){
     });
 });
 
- 
+
 
 $('.like').on('click',function(event){
 
     // event.preventDefault();
     var post_id=event.target.parentNode.parentNode.dataset['postid'];
-    if(this.id=="unliked"){
-    this.id="liked";
+    if(this.id=="liked"){
+    this.id="unliked";
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -114,12 +114,16 @@ $('.like').on('click',function(event){
             console.log("ajax unliked");
             // var body = JSON.parse(msg);
             document.getElementsByName(msg["post_id"]).innerText="Like";
+            var a=document.getElementById('count').innerText;
+            b=Number(a);
+            b++;
+            console.log(a);
 
     });
 
     }
     else{
-    this.id="unliked";
+    this.id="liked";
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -132,17 +136,20 @@ $('.like').on('click',function(event){
           document.getElementsByName(msg["post_id"]).innerText="Liked";
           console.log(document.getElementsByName(msg["post_id"]).innerText);
           document.getElementsByName(msg["post_id"]).innerText="Liked";
-
+          var a=document.getElementById('count').innerHTML;
+          b=Number(a);
+          b++;
+          console.log(a);
 
     });
     }
 
 
 });
-    
+
 $(document).ready(function() {
     $("#tagsave").click(function(){
-        $.each($("input[type='checkbox']:checked"), function(){            
+        $.each($("input[type='checkbox']:checked"), function(){
            subfield.push($(this).val());
 
        });

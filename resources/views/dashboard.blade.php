@@ -77,7 +77,14 @@
               <p class="postcont">{{$post->post_content}}</p>
               <div class='interaction'>
                 <a class="likecount" id="#count">{{$post->like_count}}</a>
+                @php
+                $converted_res = ($post->current_user_post_like_state) ? 'true' : 'false';
+                @endphp
+                @if ($converted_res =='true')
                 <a href="javascript:void(0)" class="like" id='liked' name="{{$post->id}}" >&nbspLike</a>
+                @else
+                <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
+                @endif
                 <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->id])}}'>Delete</a>&nbsp&nbsp
 
                 {{--  <p>
@@ -128,28 +135,28 @@
         <div class="modal-body">
           <label>Add tags</label>
           <div class="container">
-         
+
               <div class="dropdown col-md-6">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Tags
                 <span class="caret"></span></button>
                 @foreach($fields as $field)
                 <option class="dropdown-menu">
-              
+
                   <li class="dropdown-submenu">
                     <a class="test" tabindex="-1" href="#" id='{{$field->id}}'>{{$field->field_name}} <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-form" role="menu" id='{{-$field->id}}'>
                         <li>
                             <label class="checkbox submenu">
                                 <input type="checkbox" class='subfield'>
-                        
+
                             </label>
                         </li>
-                        
-                      </ul>    
+
+                      </ul>
                       </li>
-                </option>    
+                </option>
                 @endforeach
-            
+
                   {{--  </li>
                 </ul>  --}}
               </div>
