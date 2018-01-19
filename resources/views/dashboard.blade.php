@@ -76,7 +76,7 @@
               </div>
               <p class="postcont">{{$post->post_content}}</p>
               <div class='interaction'>
-                <a class="likecount" id="#count">{{$post->like_count}}</a>
+                {{-- <a class="likecount" id="#count">{{$post->like_count}}</a> --}}
                 @php
                 $converted_res = ($post->current_user_post_like_state) ? 'true' : 'false';
                 @endphp

@@ -33,7 +33,7 @@ Dashboard
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{route('account')}}">Account</a></li>
-            <li><a href="{{route('mychats')}}">Chats</a></li>
+            <li><a href="{{route('dashboard')}}">Dashboard</a></li>
             <li><a href="{{route('myposts')}}">My Posts</a></li>
             <li><a href="{{route('logout')}}">Logout</a></li>
 
@@ -45,7 +45,7 @@ Dashboard
 <div class='row newpost'>
         <div class='col-md-3 col-sm-12 container-fluid eq_height '>
           <div class="left">
-        
+
          {{--  <img src='{{Auth::user()->avatar}}' class='img-responsive'  alt='Profile picture'>   --}}
          <h5>John appleseed</h5>
          <p class="des">Profession<br>
@@ -57,88 +57,88 @@ Dashboard
         </div>
         <div class='col-md-9 col-sm-12 container-fluid eq_height'>
            <!-- <section class='newpost'>
-               <label for="Group">   
+               <label for="Group">
                     <article>
-                            <div class='info'>Group1 
+                            <div class='info'>Group1
                             <br></div><div class="details">
                             </div>
                            <p class="postcont">This is group 1</p>
                              <div class='interaction'>
                            <p>
-                        
+
                            </p>
                        </div>
                      </article>
-                </label>     
+                </label>
              </section>
              <section class='newpost'>
-                    <label for="Group">   
+                    <label for="Group">
                          <article>
-                                 <div class='info'>Group1 
+                                 <div class='info'>Group1
                                  <br></div><div class="details">
                                  </div>
                                 <p class="postcont">This is group 1</p>
                                   <div class='interaction'>
                                 <p>
-                             
+
                                 </p>
                             </div>
                           </article>
-                     </label>     
+                     </label>
                   </section>
                   <section class='newpost'>
-                        <label for="Group">   
+                        <label for="Group">
                              <article>
-                                     <div class='info'>Group1 
+                                     <div class='info'>Group1
                                      <br></div><div class="details">
                                      </div>
                                     <p class="postcont">This is group 1</p>
                                       <div class='interaction'>
                                     <p>
-                                 
+
                                     </p>
                                 </div>
                               </article>
-                         </label>     
+                         </label>
                       </section>
 
                       <section class='newpost'>
-                            <label for="Group">   
+                            <label for="Group">
                                  <article>
-                                         <div class='info'>Group1 
+                                         <div class='info'>Group1
                                          <br></div><div class="details">
                                          </div>
                                         <p class="postcont">This is group 1</p>
                                           <div class='interaction'>
                                         <p>
-                                     
+
                                         </p>
                                     </div>
                                   </article>
-                             </label>     
+                             </label>
                           </section>
-                          
+
                           <section class='newpost'>
-                                <label for="Group">   
+                                <label for="Group">
                                      <article>
-                                             <div class='info'>Group1 
+                                             <div class='info'>Group1
                                              <br></div><div class="details">
                                              </div>
                                             <p class="postcont">This is group 1</p>
                                               <div class='interaction'>
                                             <p>
-                                         
+
                                             </p>
                                         </div>
                                       </article>
-                                 </label>     
+                                 </label>
                               </section>    -->
 
 
 
 
 
-                              <div class="compSpons"> 
+                              <div class="compSpons">
       <ul class="cbp-rfgrid">
         <li><div><h3>Group1</h3></div></li>
         <li><div><h3>Group1</h3></div></li>
@@ -148,35 +148,27 @@ Dashboard
         <li><div><h3>Group1</h3></div></li>
         <li><div><h3>Group1</h3></div></li>
         <li><div><h3>Group1</h3></div></li>
-      
-        
-        
+
+
+
       </ul>
         </div>
          <!--</div></div>
-    
-    
+
+
              <div name='posts' class='row post'>
                 <div class='col-md-3'></div>
                 <div class='col-md-9'>-->
-                   
-    
+
+
 
                 </div>
             </div>
-    
-           
-         
+
+
+
         </div>
-      
+
     </div>
-  
+
       @endsection
-    
-    
-  
-    
-        
-    
-
-

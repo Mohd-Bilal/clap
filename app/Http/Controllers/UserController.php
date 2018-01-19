@@ -68,7 +68,7 @@ class UserController extends Controller{
 
     ]);
 
-  
+
     if ($request['gender']=='M')
     $avatar='/src/img/dummymale.jpg';
     else
@@ -106,7 +106,7 @@ class UserController extends Controller{
       $obj = json_decode($body);
       if($obj->state == "success"){
         $request->session()->put('jwt_token', $obj->token);
-        return redirect()->route('dashboard');
+        return redirect()->route('adduserfield');
       }
       elseif($obj->state == "failure"){
         // return($obj->description);

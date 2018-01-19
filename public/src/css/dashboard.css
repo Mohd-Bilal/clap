@@ -26,10 +26,10 @@
   padding: 20px 10px 0;
   max-height: 100px;
   overflow-y: scroll;
-  
+
 }
 .submenu{
-    
+
   padding-left: 15px
 }
 .post{
@@ -102,13 +102,13 @@
     color:white;
 }
 .interaction{
-  color:#D0D3D4  ;
+  color:#D0D3D4 ;
 }
 #liked{
-  color:#D0D3D4;
+  color:rgb(16, 158, 206);
 }
 #unliked{
-  color:rgb(16, 158, 206);
+  color:#D0D3D4;
 }
 .likecount{
   color:#D0D3D4;
@@ -437,7 +437,7 @@ h3{
       font-size: 20px;
 
     }
-    
+
 }
 
 

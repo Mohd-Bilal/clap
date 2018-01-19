@@ -37,7 +37,7 @@ class PostController extends Controller{
           return view('dashboard',['posts'=>$obj->data,'fields'=>$interests]);
         }
       else {
-          return view('dashboard',['posts'=>$obj->description_slug]);
+          return view('dashboard',['posts'=>$obj->description_slug,'fields'=>$interests]);
         }
     }
     else{
@@ -67,13 +67,13 @@ class PostController extends Controller{
       $body=$client->get('http://localhost:3000/public/information/fields')->getBody();
       $interests=json_decode($body);
       return response()->json(['fields'=>$interests]);
-    } 
+    }
     public function fetchsubfield(Request $request){
       $client=new Client();
       $body=$client->get($request['suburl'])->getBody();
       $interests=json_decode($body);
       return response()->json(['subfield'=>$interests,'fieldid'=>$request['field_id']]);
-      
+
 
 
     }
