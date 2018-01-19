@@ -176,9 +176,8 @@ $('#tagsave').on('click',function(event){
         var body = JSON.parse(msg);
         console.log(body["state"]);
         if(body["state"]=='success'){
-        location.reload(true);
          document.getElementById('success').innerHTML=body["description"];
-        }
+         location.reload(true);}
         else
         document.getElementById('error').innerHTML=body["description"];
 
