@@ -6,7 +6,7 @@ $(function() {
   var special = ['reveal', 'top', 'boring', 'perspective', 'extra-pop'];
 
   // Toggle Nav on Click
-  $('#hearts a').click(function() {
+  $('#reply').click(function() {
 
     var transitionClass = $(this).data('transition');
 

@@ -143,20 +143,14 @@
                       <p class="postcont">{{$post->post_content}}</p>
                       <div class='interaction'>
                         {{-- <a class="likecount" id="#count">{{$post->like_count}}</a> --}}
-                        @php
-                        $converted_res = ($post->current_user_post_like_state) ? 'true' : 'false';
-                        @endphp
-                        @if ($converted_res =='true')
-                          <a href="javascript:void(0)" class="like" id='liked' name="{{$post->id}}" >&nbspLike</a>
-                        @else
-                          <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
-                        @endif
-                        <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
+
+                        <a class="delete" id="delete" href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
                         <a href='#' class='editpost' style="color:white;margin:10px;">Edit<!--<i class="fa fa-pencil-square-o" aria-hidden="true">--></i></a>
-                        
-                        <a href="#" data-transition="ease" class="float-right" style="color:white;margin:10px;"><i class="fa"></i><span>Replies</span></a>
+
 
                     </div>
+                    <a href="#" data-transition="ease" id="reply" class="float-right" style="color:white;margin:10px;"><i class="fa"></i><span>Replies</span></a>
+
                   </article>
 
                 @endforeach

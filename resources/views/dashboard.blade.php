@@ -88,6 +88,7 @@
 
           <p></p>
 
+                
 
                 <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
 
