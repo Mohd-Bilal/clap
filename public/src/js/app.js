@@ -116,10 +116,11 @@ $('.like').on('click',function(event){
             console.log("ajax unliked");
             // var body = JSON.parse(msg);
             document.getElementsByName(msg["post_id"]).innerText="Like";
-            var a=document.getElementById('count').innerText;
-            b=Number(a);
-            b++;
-            console.log(a);
+            // var a=document.getElementById('count').innerText;
+            // b=Number(a);
+            // b++;
+            // console.log(a);
+            console.log(msg);
 
     });
 
@@ -138,10 +139,11 @@ $('.like').on('click',function(event){
           document.getElementsByName(msg["post_id"]).innerText="Liked";
           console.log(document.getElementsByName(msg["post_id"]).innerText);
           document.getElementsByName(msg["post_id"]).innerText="Liked";
-          var a=document.getElementById('count').innerHTML;
-          b=Number(a);
-          b++;
-          console.log(a);
+        //   var a=document.getElementById('count').innerHTML;
+        //   b=Number(a);
+        //   b++;
+        //   console.log(a);
+        console.log(msg);
 
     });
     }
