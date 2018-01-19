@@ -190,7 +190,7 @@
   
   .big:hover,
   .small:hover {
-    background: white
+    background: rgb(56, 53, 53)
   }
   
   .big {
@@ -233,103 +233,112 @@
   /*styling the boxes/thumbs*/
   
   .weather-thumb {
-    background: #F2854C
+    background: #5D6D7E;
   }
-  
-  .weather-thumb:hover {
-    color: #F2854C
+  .weather-thumb :hover {
+    color: #5D6D7E;
   }
   
   .paint-thumb {
-    background: #85A9C3
+    background: #85929E
   }
   
   .paint-thumb:hover {
-    color: #85A9C3
+    color: #85929E
   }
   
   .cpanel-thumb {
-    background: #83A8C3
+    background: #7B7D7D  
   }
   
   .cpanel-thumb:hover {
-    color: #83A8C3
+    color: #7B7D7D  
   }
   
   .games-thumb {
-    background: #04ACAD
+    background: #1C2833  
   }
   
   .games-thumb:hover {
-    color: #04ACAD
+    color: #1C2833  
   }
   
   .news-thumb,
   .calculator-thumb {
-    background: #EBB741
+    background: #424949
   }
   
   .news-thumb:hover,
   .calculator-thumb:hover {
-    color: #EBB741
+    color: #424949
   }
   
   .videos-thumb,
   .code-thumb {
-    background: #BEA881
+    background: #34495E
   }
   
   .videos-thumb:hover,
   .code-thumb:hover {
-    color: #BEA881
+    color:#34495E
   }
   
   .lock-thumb,
   .alarm-thumb {
-    background: #EF3A5B
+    background: #154360
   }
   
   .lock-thumb:hover,
   .alarm-thumb:hover {
-    color: #EF3A5B
+    color: #154360
   }
   
   .git-thumb,
   .favorites-thumb,
   .notes-thumb {
-    background: rgb(169, 185, 201)
+    background: #95A5A6  
   }
   
   .git-thumb:hover,
   .favorites-thumb:hover,
   .notes-thumb:hover {
-    color: rgb(169, 185, 201)
+    color: #95A5A6  
   }
   
   .photos-thumb {
-    background: #BEA881
+    background: #7FB3D5  
   }
   
   .photos-thumb:hover {
-    color: #BEA881
+    color: #7FB3D5  
   }
   
   .calendar-thumb,
   .organizer-thumb {
-    background: #8BBA30
+    background: #A2D9CE
   }
   
   .calendar-thumb:hover,
   .organizer-thumb:hover {
-    color: #8BBA30
+    color:#A2D9CE
   }
   
   .todos-thumb {
-    background: #2FB1BE
+    background: #ABB2B9  
   }
   
   .todos-thumb:hover {
-    color: #2FB1BE
+    color: #ABB2B9  
+  }
+  .big{
+    opacity:0.8;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.7), 0 0px 40px 0 rgba(0, 0, 0, 0.21);
+  }
+
+  .small{
+    opacity:0.8;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.7), 0 0px 40px 0 rgba(0, 0, 0, 0.21);
+
   }
   
   .todos-thumb p {
@@ -940,3 +949,48 @@
       left: -150%
     }
   }
+
+  #submit-fields{
+    color:white;
+    background-color: rgba(0,0,0,0.8);
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.7), 0 0px 40px 0 rgba(0, 0, 0, 0.21);
+    border-width:0px;
+    
+    padding: 10px;
+    text-decoration: none;
+  }
+  #submit-fields :hover{
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.7), 0 0px 40px 0 rgba(0, 0, 0, 0.21);
+  }
+   #submit-fields :focus{
+    color:black;
+    background-color: white;
+   }
+  button:focus {outline:1;
+    outline-color: white;}
+  @media (max-width: 720px) {
+  .big{
+  font-size: 20px;
+}
+.small{
+  font-size: 20px;
+}
+}
+
+  @media (max-width: 480px) {
+.big{
+  font-size: 15px;
+}
+.small{
+  font-size: 15px;
+}
+}
+ 
+ @media (max-width: 480px) {
+  .big{
+  font-size: 14px;
+}
+.small{
+  font-size: 14px;
+}
+}

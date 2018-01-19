@@ -1,3 +1,5 @@
+
+
 @extends('master')
 
 
@@ -6,6 +8,8 @@ User Interests
 @endsection
 @include('postvalidate')
 @section('content')
+
+
 <link rel='stylesheet' href={{URL::to('src/css/dashboard.css')}}>
 <link rel='stylesheet' href={{URL::to('src/css/adduserfield.css')}}>
 <div id='error' class='error'>
@@ -23,13 +27,13 @@ User Interests
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{route('dashboard')}}" style='font-family: helveticaneuecondensedbold'>My Chats</a>
+      <a class="navbar-brand" href="{{route('dashboard')}}" style='font-family: helveticaneuecondensedbold'>Renegade</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{route('dashboard')}}" style='font-family: helveticaneuecondensedbold'>Dashboard</a></li>
+        <!--<li><a href="{{route('dashboard')}}" style='font-family: helveticaneuecondensedbold'>Dashboard</a></li>-->
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -37,7 +41,7 @@ User Interests
  
 </nav>
 </header>
-<div class='row newpost'>
+<div class='row newpost' style="margin-top:70px;margin-left: 30px;margin-right: 30px;">
         {{--  <div class='col-md-3 container-fluid eq_height '>
           
         </div>  --}}
@@ -130,8 +134,4 @@ User Interests
   
 <script>
     var x='{{route('sendfield')}}'; 
-
-</script>        
-    
-
-
+</script>

@@ -74,12 +74,14 @@ $('.fields').on('click',function(event){
         x.setAttribute("name",'set');
         userfield.push(fieldid);
         x.style.color='black';
+        x.style.fontSize='25px';
     }
     else{
     x.setAttribute("name",'unset');
     const index = userfield.indexOf(fieldid);
     userfield.splice(index,1);
     x.style.color='white';
+    x.style.fontSize='18px';
 }
     // console.log(userfield);
 });
