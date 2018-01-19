@@ -2,6 +2,7 @@ var postid=-1;
 var postBody=null;
 var msg=null;
 var userfield= new Array();
+var subfield=new Array;
 
 $("#count").load("dashboard.blade.php #count");
 
@@ -57,10 +58,9 @@ $('.test').on('click',function(event){
     .done(function(msg){
         var y=new String;
         $.each(msg['subfield'],function(key,value){
-            var x='<li><label class="checkbox submenu"><input type="checkbox" id='+value.id+'>'+value.sub_field_name+'</label></li>';
+            var x='<li><label class="checkbox submenu"><input type="checkbox" value='+value.id+'>'+value.sub_field_name+'</label></li>';
             y=y+x;
         });
-        // console.log(y);
         document.getElementById(-msg['fieldid']).innerHTML=y;
     })
 });
@@ -95,6 +95,9 @@ $('#submit-fields').on('click',function(){
         window.location.href='/dashboard' ;
     });
 });
+
+ 
+
 $('.like').on('click',function(event){
 
     // event.preventDefault();
@@ -136,19 +139,26 @@ $('.like').on('click',function(event){
 
 
 });
+    
+$(document).ready(function() {
+    $("#tagsave").click(function(){
+        $.each($("input[type='checkbox']:checked"), function(){            
+           subfield.push($(this).val());
+
+       });
+        console.log(subfield);
+   });
+
+});
 
 
 $('#tagsave').on('click',function(event){
     var body=document.getElementById('newpost').value;
-    // var t1=document.getElementById('t1').checked;
-    // var t2=document.getElementById('t2').checked;
-    // var t3=document.getElementById('t3').checked;
-    // var t4=document.getElementById('t4').checked;
-    // var t5=document.getElementById('t5').checked;
+
     $.ajax({
         method:'POST',
         url:createpost,
-        data:{body:body,_token:token}
+        data:{body:body,subfields:subfield,_token:token}
 
     })
     .done(function(msg){
