@@ -139,10 +139,13 @@
                   <p class="postcont">HELLO WORLD</p>
                   <div class='interaction'>
                     <p>
-                      <a href='#' class='editpost' id='like'>Edit</a>&nbsp&nbsp
+                      <!--<a href='#' class='editpost' id='like'>Edit</a>&nbsp&nbsp
                       <a href='#' id='like'>Delete</a>
                       <a href="#" data-transition="ease" class="pull-right"><i class="fa"></i><span id='like'>Replies&nbsp&nbsp&nbsp</span></a>
-
+                         -->
+                          <a href='#' class='editpost' style="color:white;margin:10px;">Edit<!--<i class="fa fa-pencil-square-o" aria-hidden="true">--></i></a>
+                      <a href='#' style="color:white;margin:10px;">Delete<!--<i class="fa fa-trash" aria-hidden="true"></i>--></a>
+                      <a href="#" data-transition="ease" class="float-right" style="color:white;margin:10px;"><i class="fa"></i><span>Replies</span></a>
 
                     </p>
                   </div>
