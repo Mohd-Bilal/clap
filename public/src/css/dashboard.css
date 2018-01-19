@@ -104,6 +104,9 @@
 .interaction{
   color:#D0D3D4 ;
 }
+.dropdown-size{
+  width: 40px;
+}
 #liked{
   color:rgb(16, 158, 206);
 }

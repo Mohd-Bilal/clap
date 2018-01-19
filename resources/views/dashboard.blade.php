@@ -136,7 +136,7 @@
           <label>Add tags</label>
           <div class="container">
 
-              <div class="dropdown col-md-6">
+              <div class="dropdown col-md-4 dropdown-size">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Tags
                 <span class="caret"></span></button>
                 @foreach($fields as $field)
