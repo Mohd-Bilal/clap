@@ -132,64 +132,85 @@
               <div class='col-md-9'>-->
 
 
-              <article data-postid='32'>
-                <div class='info'>
-                  testuser <br></div><div class="details">11:00pm
-                  </div>
-                  <p class="postcont">HELLO WORLD</p>
-                  <div class='interaction'>
-                    <p>
-                      <!--<a href='#' class='editpost' id='like'>Edit</a>&nbsp&nbsp
-                      <a href='#' id='like'>Delete</a>
-                      <a href="#" data-transition="ease" class="pull-right"><i class="fa"></i><span id='like'>Replies&nbsp&nbsp&nbsp</span></a>
-                         -->
-                          <a href='#' class='editpost' style="color:white;margin:10px;">Edit<!--<i class="fa fa-pencil-square-o" aria-hidden="true">--></i></a>
-                      <a href='#' style="color:white;margin:10px;">Delete<!--<i class="fa fa-trash" aria-hidden="true"></i>--></a>
-                      <a href="#" data-transition="ease" class="float-right" style="color:white;margin:10px;"><i class="fa"></i><span>Replies</span></a>
+              @if ($posts != "success-feeds-empty")
 
-                    </p>
-                  </div>
-                </article>
 
-              </div>
+                @foreach($posts as $post)
+                  <article data-postid='{{$post->id}}'>
+                    <div class='info'>
+                      {{$post->author->username}} <br></div><div class="details">{{date("H:i:s | Y-m-d", strtotime($post->createdAt))}}
+                      </div>
+                      <p class="postcont">{{$post->post_content}}</p>
+                      <div class='interaction'>
+                        {{-- <a class="likecount" id="#count">{{$post->like_count}}</a> --}}
+                        @php
+                        $converted_res = ($post->current_user_post_like_state) ? 'true' : 'false';
+                        @endphp
+                        @if ($converted_res =='true')
+                          <a href="javascript:void(0)" class="like" id='liked' name="{{$post->id}}" >&nbspLike</a>
+                        @else
+                          <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
+                        @endif
+                        <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
+                        <a href='#' class='editpost' style="color:white;margin:10px;">Edit<!--<i class="fa fa-pencil-square-o" aria-hidden="true">--></i></a>
+                        
+                        <a href="#" data-transition="ease" class="float-right" style="color:white;margin:10px;"><i class="fa"></i><span>Replies</span></a>
+
+                    </div>
+                  </article>
+
+                @endforeach
+              @endif
+
+
+
+
+
+
+
+
+
+
+
             </div>
           </div>
-
-          <div class="modal" tabindex="-1" role="dialog" id='editmodal'>
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <label>Edit</label>
-                  <textarea class='form-control' rows='5' col='5' id='editform'>
-                  </textarea>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary bton" id='modal-save'>Save changes</button>
-                  <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
         </div>
-        <script>
-        var token='{{Session::token()}}';
-        var url='{{route('edit')}}';
-        var likeurl='{{route('like')}}';
-        var  dashboard='{{route('dashboard')}}';
-        var createpost='{{route('createpost')}}';
-        </script>
+
+        <div class="modal" tabindex="-1" role="dialog" id='editmodal'>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Post</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <label>Edit</label>
+                <textarea class='form-control' rows='5' col='5' id='editform'>
+                </textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary bton" id='modal-save'>Save changes</button>
+                <button type="button" class="btn btn-secondary bton1" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
+      <script>
+      var token='{{Session::token()}}';
+      var url='{{route('edit')}}';
+      var likeurl='{{route('like')}}';
+      var  dashboard='{{route('dashboard')}}';
+      var createpost='{{route('createpost')}}';
+      </script>
     </div>
   </div>
-  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+</div>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 
 </body>
 @endsection

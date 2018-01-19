@@ -85,6 +85,10 @@
                 @else
                 <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
                 @endif
+
+          <p></p>
+
+
                 <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
 
                 {{--  <p>
