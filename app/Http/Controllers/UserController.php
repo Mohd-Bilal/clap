@@ -14,24 +14,22 @@ use Socialite;
 class UserController extends Controller{
 
   public function getDashboard(){
-
     return view('dashboard');
-
   }
-  public function PreSignup(){
+
+  public function signup(){
       $client=new Client();
       $body=$client->get('http://localhost:3000/public/information/occupations')->getBody();
       $occupation=json_decode($body);
       // return ($occupation[0]->id);
       return view('signup',['occupations'=>$occupation]);
-
     }
+
   public function Fetchfield(){
       $client=new Client();
       $body=$client->get('http://localhost:3000/public/information/fields')->getBody();
       $interests=json_decode($body);
       return view('interest',['fields'=>$interests]);
-
   }
   public function sendField(Request $request){
     $value = $request->session()->get('jwt_token');
