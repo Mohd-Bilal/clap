@@ -71,13 +71,13 @@
         $username = $request->session()->get('user_name');
         @endphp
         @foreach($posts as $post)
-          <article data-postid='{{$post->id}}'>
+          <article data-postid="{{$post->id}}">
             <div class='info'>
               {{$post->author->username}} <br></div><div class="details">{{date("H:i:s | Y-m-d", strtotime($post->createdAt))}}
               </div>
               <p class="postcont">{{$post->post_content}}</p>
               <div class='interaction'>
-                {{-- <a class="likecount" id="#count">{{$post->like_count}}</a> --}}
+                <a class="likecount" id="#{{$post->id}}">{{$post->like_count}}</a>
                 @php
                 $converted_res = ($post->current_user_post_like_state) ? 'true' : 'false';
                 @endphp

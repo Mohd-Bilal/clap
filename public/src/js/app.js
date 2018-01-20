@@ -102,10 +102,18 @@ $('#submit-fields').on('click',function(){
 
 $('.like').on('click',function(event){
 
-    // event.preventDefault();
+    event.preventDefault();
     var post_id=event.target.parentNode.parentNode.dataset['postid'];
     if(this.id=="liked"){
     this.id="unliked";
+    this.text="Like";
+    $('.likecount').each(function(data){
+        if(this.id==('#'+post_id)){
+            var a=this.text;
+            var b=Number(a);
+            this.text=--b;
+        }
+    });
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -115,18 +123,32 @@ $('.like').on('click',function(event){
     .done(function(msg) {
             console.log("ajax unliked");
             // var body = JSON.parse(msg);
-            document.getElementsByName(msg["post_id"]).innerText="Like";
+            
+            // console.log(document.getElementsByName(msg['post_id']));
             // var a=document.getElementById('count').innerText;
             // b=Number(a);
             // b++;
             // console.log(a);
-            console.log(msg);
-
     });
 
     }
     else{
     this.id="liked";
+    this.text='Like';
+    $('.likecount').each(function(data){
+        
+        if(this.id==('#'+post_id)){
+            var a=this.text;
+            var b=Number(a);
+            this.text=++b;
+        }
+        
+    });
+
+    // var b=Number(a);
+    // b++;
+    // console.log(a);
+   
     $.ajax({
         method:'POST',
         url:likeurl,
@@ -136,14 +158,14 @@ $('.like').on('click',function(event){
     .done(function(msg) {
           console.log("ajax liked");
           // var body = JSON.parse(msg);
-          document.getElementsByName(msg["post_id"]).innerText="Liked";
-          console.log(document.getElementsByName(msg["post_id"]).innerText);
+        //   var a=document.querySelectorAll("[name="+msg['post_id']+"]");
+
           document.getElementsByName(msg["post_id"]).innerText="Liked";
         //   var a=document.getElementById('count').innerHTML;
         //   b=Number(a);
         //   b++;
         //   console.log(a);
-        console.log(msg);
+        // console.log(msg);
 
     });
     }
