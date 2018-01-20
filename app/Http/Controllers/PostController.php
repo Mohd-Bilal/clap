@@ -29,6 +29,7 @@ class PostController extends Controller{
 
         ])->getBody();
         $obj = json_decode($body);
+        return($obj->data);
         $fields=$client->get('http://localhost:3000/public/information/fields')->getBody();
         $interests=json_decode($fields);
         // return($interests);

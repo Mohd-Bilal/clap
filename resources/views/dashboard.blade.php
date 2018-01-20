@@ -66,9 +66,10 @@
       <div class='col-md-3'></div>
       <div class='col-md-9'>-->
 
-      @if ($posts != "success-feeds-empty")
-
-
+      @if ($posts->description_slug != "success-feeds-empty")
+        @php
+        $username = $request->session()->get('user_name');
+        @endphp
         @foreach($posts as $post)
           <article data-postid='{{$post->id}}'>
             <div class='info'>
@@ -85,13 +86,9 @@
                 @else
                 <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
                 @endif
-
-          <p></p>
-
-                
-
+                @if($username == $post->author->username )
                 <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
-
+                @endif
                 {{--  <p>
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp
                 <a href='#' class='like' >{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ?$likecount[$post->id]['dislikes'].' You don\'t like this post' :$likecount[$post->id]['dislikes'].' Dislike' :$likecount[$post->id]['dislikes'].' Dislike'  }}</a>

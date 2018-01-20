@@ -149,6 +149,7 @@ class UserController extends Controller{
     $obj = json_decode($body);
     if($obj->state == "success"){
       $request->session()->put('jwt_token', $obj->token);
+      $request->session()->put('username', $obj->user_name);
     //  $value = $request->session()->get('jwt_token');
     //  return($value);
     //  return($obj->description);
