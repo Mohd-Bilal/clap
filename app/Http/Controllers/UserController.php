@@ -17,7 +17,7 @@ class UserController extends Controller{
     return view('dashboard');
   }
 
-  public function signup(){
+  public function signUpPageInit(){
       $client=new Client();
       $body=$client->get('http://localhost:3000/public/information/occupations')->getBody();
       $occupation=json_decode($body);
@@ -63,15 +63,12 @@ class UserController extends Controller{
       'confirmpassword'=>'required_with:password|same:password|min:8',
       'gender' => 'required',
       'channel' => 'required',
-
     ]);
 
-
     if ($request['gender']=='M')
-    $avatar='/src/img/dummymale.jpg';
+      $avatar='/src/img/dummymale.jpg';
     else
-    $avatar='/src/img/dummyfemale.jpeg';
-
+      $avatar='/src/img/dummyfemale.jpeg';
 
     $client = new Client(); //GuzzleHttp\Client
     $body = $client->post('http://localhost:3000/authentication/signup/renegade', [
@@ -85,7 +82,6 @@ class UserController extends Controller{
         'occupation_id' => $request['channel'],
         'avatar' => $avatar,
         'date_of_birth' => "1996-4-3"
-
       ]
     ])->getBody();
     $obj = json_decode($body);
@@ -110,10 +106,7 @@ class UserController extends Controller{
         // return($obj->description);
         return redirect()->back();
       }
-
-
     }
-
     return redirect()->route('dashboard');
   }
 

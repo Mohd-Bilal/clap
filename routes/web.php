@@ -12,31 +12,34 @@ use App\Events\MessagePosted;
 |
 */
 
-
 Route::get('/', function () {
   return view('welcome');
 })->name('welcome');
 
 Route::get('signup',[
-  'uses' => 'UserController@PreSignup',
+  'uses' => 'UserController@signUpPageInit',
   'as'=>'signup'
 ]);
+
 Route::get('signin', function () {
   return view('signin');
 })->name('signin');
+
 Route::post('postsignup',[
   'uses' => 'UserController@Signup',
   'as' =>'postsignup'
 ]);
+
 Route::post('postsignin',[
   'uses' => 'UserController@Signin',
   'as' =>'postsignin'
 ]);
+
 Route::get('/privacypolicy',[
   'uses'=>'UserController@privacy',
   'as'=>'privacypolicy'
-
 ]);
+
 Route::get('/termsofservice',[
   'uses'=>'UserController@terms',
   'as'=>'termsofservice'
@@ -57,10 +60,12 @@ Route::get('account',[
   'uses' => 'UserController@getAccount',
   'as' =>'account',
 ]);
+
 Route::get('fetchfields',[
   'uses' => 'PostController@fetchfields',
   'as' => 'fetchfields'
 ]);
+
 Route::get('fetchsubfield',[
   'uses' => 'PostController@fetchsubfield',
   'as' => 'fetchsubfield'
@@ -145,11 +150,6 @@ Route::post('/messages', function () {
   // Announce that a new message has been posted
   broadcast(new MessagePosted($message, $user))->toOthers();
   return ['status' => 'OK'];
-});
-
-
-Route::group(['prefix' => 'admin'], function () {
-  Voyager::routes();
 });
 
 Auth::routes();

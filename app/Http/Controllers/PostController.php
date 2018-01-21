@@ -26,22 +26,26 @@ class PostController extends Controller{
           'requested_number' =>10,
           'offset' => 0
         ]
-
         ])->getBody();
         $obj = json_decode($body);
-        return($obj->data);
-        $fields=$client->get('http://localhost:3000/public/information/fields')->getBody();
-        $interests=json_decode($fields);
-        // return($interests);
-        if($obj->state == "success" && $obj->description_slug == "success-feeds"){
-
-          return view('dashboard',['posts'=>$obj->data,'fields'=>$interests]);
+        if($obj->state == "success")
+        {
+          // return($obj->data);
+          $fields=$client->get('http://localhost:3000/public/information/fields')->getBody();
+          $interests=json_decode($fields);
+          // return($interests);
+          if($obj->description_slug == "success-feeds") {
+            return view('dashboard',['posts'=>$obj->data,'fields'=>$interests]);
+          }
+          else {
+            return view('dashboard',['posts'=>$obj->description_slug,'fields'=>$interests]);
+          }
         }
-        else {
-          return view('dashboard',['posts'=>$obj->description_slug,'fields'=>$interests]);
+        else
+        {
         }
       }
-      else{
+      else {
         return redirect()->route('welcome');
       }
     }
@@ -97,15 +101,14 @@ class PostController extends Controller{
           $interests=json_decode($body);
           return response()->json(['fields'=>$interests]);
         }
+
         public function fetchsubfield(Request $request){
           $client=new Client();
           $body=$client->get($request['suburl'])->getBody();
           $interests=json_decode($body);
           return response()->json(['subfield'=>$interests,'fieldid'=>$request['field_id']]);
-
-
-
         }
+
         public function getDeletePost($post_id,Request $request)
         {
           $client=new Client();
@@ -138,19 +141,6 @@ class PostController extends Controller{
 
           }
 
-          // public function likecount($postid){
-          //   $postlike=DB::table('likes')->get()->where('post_id',$postid);
-          //   $lcount=0;
-          //   $dcount=0;
-          //   foreach($postlike as &$likepost){
-          //     if($likepost->like)
-          //     $lcount++;
-          //     else
-          //     $dcount++;
-
-          //   }
-          //   return ['likes'=>$lcount,'dislikes'=>$dcount];
-          // }
           public function postLike(Request $request){
             $value = $request->session()->get('jwt_token');
 

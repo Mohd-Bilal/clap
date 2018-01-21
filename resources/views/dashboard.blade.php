@@ -66,7 +66,7 @@
       <div class='col-md-3'></div>
       <div class='col-md-9'>-->
 
-      @if ($posts->description_slug != "success-feeds-empty")
+      @if ($posts != "success-feeds-empty")
         @php
         $username = $request->session()->get('user_name');
         @endphp
