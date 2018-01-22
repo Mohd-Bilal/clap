@@ -68,7 +68,7 @@
 
       @if ($posts != "success-feeds-empty")
         @php
-        $username = $request->session()->get('user_name');
+        $username=session()->get('username');
         @endphp
         @foreach($posts as $post)
           <article data-postid="{{$post->id}}">
@@ -86,7 +86,7 @@
                 @else
                 <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}" >&nbspLike</a>
                 @endif
-                @if($username == $post->author->username )
+                @if($username == $post->author->username)
                 <a class="delete" id="delete"href='{{route('post.delete',['post_id' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
                 @endif
                 {{--  <p>

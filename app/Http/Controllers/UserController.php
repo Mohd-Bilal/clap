@@ -100,6 +100,7 @@ class UserController extends Controller{
       $obj = json_decode($body);
       if($obj->state == "success"){
         $request->session()->put('jwt_token', $obj->token);
+        $request->session()->put('username', $obj->user_name);
         return redirect()->route('adduserfield');
       }
       elseif($obj->state == "failure"){
