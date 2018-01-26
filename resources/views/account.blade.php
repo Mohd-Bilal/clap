@@ -123,7 +123,7 @@
             <h5>
                 <!--{{ $user->first_name }}&nbsp{{ $user->last_name }}</h5>
         <h6>@<span>{{ $user->username }}</span></h6>-->--}} {{-- <img src='{{Auth::user()->avatar}}' class='img-responsive' alt='Profile picture'> --}}
-                <h5>John appleseed</h5>
+                <h5>{{$first_name.' '.$last_name}}</h5>
                 <p class="des">Profession<br> 25,&nbspMale
                     <br> California
                     <br>
@@ -149,7 +149,7 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" class="form-control" value={{$email}} id="email">
             </div>
-            <div class='form-group'>
+            {{--  <div class='form-group'>
                 <button id='changepwd' class="bton" name='changepwd' type="button">Change Password</button>
                 <div id="change" style="display:None">
                     <label for="Currentpassword">Current Password</label>
@@ -163,9 +163,9 @@
             <div class="form-group">
                 <label for="image">Image (only .jpg)</label>
                 <input type="file" name="image" class="form-control" id="image">
-            </div>
+            </div>  --}}
             <button type="submit" class="bton">Save Account</button>
-            <input type="hidden" name="_token">
+            <input type="hidden" value='{{Session::token()}}' name="_token">
         </form>
     </div>
 </section>

@@ -70,9 +70,9 @@
         <a class="likecount" id="#{{$post->id}}">{{$post->like_count}}</a> @php $converted_res = ($post->current_user_post_like_state)
         ? 'true' : 'false'; @endphp @if ($converted_res =='true')
         <a href="javascript:void(0)" class="like" id='liked' name="{{$post->id}}">&nbspLike</a> @else
-        <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}">&nbspLike</a> @endif @if($username ==
+        <a href="javascript:void(0)" class="like" id='unliked' name="{{$post->id}}">&nbspLike&nbsp</a> @endif @if($username ==
         $post->author->username)
-        <a class="delete" id="delete" href='{{route(' post.delete ',['post_id ' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
+        <a class="delete" id="delete" href='{{route('post.delete',['post_id ' => $post->post_id])}}'>Delete</a>&nbsp&nbsp
         @endif {{--
         <p>
           <a href='#' class='like'>{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ?$likecount[$post->id]['likes'].' You liked this post' :$likecount[$post->id]['likes'].' Like':$likecount[$post->id]['likes'].' Like'  }}</a>&nbsp&nbsp

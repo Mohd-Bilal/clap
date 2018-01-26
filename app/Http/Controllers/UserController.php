@@ -182,25 +182,26 @@ class UserController extends Controller
 
     public function postSaveAccount(Request $request)
     {
+        $value = $request->session()->get('jwt_token');
         $this->validate($request, [
             'first_name' => 'required|max:120',
             'last_name' => 'required|max:120',
         ]);
 
-        $user = Auth::user();
-        $user->first_name = $request['first_name'];
-        $user->last_name = $request['last_name'];
-        $file = $request->file('image');
-        $filename = $request['first_name'] . '-' . $user->id . '.jpg';
-        if ($file) {
-            $user->avatar = '/storage/' . $filename;
-        }
-
-        $user->save();
-        if ($file) {
-            Storage::disk('profile')->put($filename, File::get($file));
-        }
+        if($value){
+        $client = new Client();
+        $body = $client->post('127.0.0.1:3000/private/update/profile/accountupdate/',[
+            'headers' => [
+                'Authorization' => 'Bearer ' . $value,
+            ],
+            'json' => [
+                'first_name' => $request['first_name'],
+                'second_name' => $request['last_name']
+            ]
+        ])->getBody();
         return redirect()->route('account');
+            }
+
     }
 
     public function getUserImage($filename)
