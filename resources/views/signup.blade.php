@@ -56,6 +56,16 @@
       </div>
     </div>
   </div>
+  <div class="row fields">
+    <div class="col-md-6 col-xs-6">
+      <div class='form-group'>
+        <p>&nbspDate Of Birth<p>
+        <input class="form-control" type="date" name="date_of_birth" >
+      </div>
+    </div>
+    
+  </div>
+
   <div class="row fields"><div class="col-md-6 col-xs-12">
     <div class='form-group'>
       <select name="channel">

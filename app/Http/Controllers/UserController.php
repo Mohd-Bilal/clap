@@ -58,7 +58,7 @@ class UserController extends Controller
     }
 
     public function Signup(Request $request)
-    {
+    {  
         $this->validate($request, [
             'email' => 'required|email',
             'first_name' => 'required|max:120',
@@ -87,7 +87,7 @@ class UserController extends Controller
                 'gender' => $request['gender'],
                 'occupation_id' => $request['channel'],
                 'avatar' => $avatar,
-                'date_of_birth' => "1996-4-3",
+                'date_of_birth' => $request['date_of_birth'],
             ],
         ])->getBody();
         $obj = json_decode($body);
