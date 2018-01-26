@@ -58,7 +58,7 @@ class UserController extends Controller
     }
 
     public function Signup(Request $request)
-    {  
+    {
         $this->validate($request, [
             'email' => 'required|email',
             'first_name' => 'required|max:120',
@@ -68,6 +68,7 @@ class UserController extends Controller
             'confirmpassword' => 'required_with:password|same:password|min:8',
             'gender' => 'required',
             'channel' => 'required',
+            'date_of_birth' =>'required'
         ]);
 
         if ($request['gender'] == 'M') {
